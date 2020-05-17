@@ -9,16 +9,18 @@ namespace PaperPlaneTools.AR {
 	using UnityEngine.UI;
 	
 	public class MainScript: WebCamera {
-		[Serializable]
+        public GameObject player;
+
+        [Serializable]
 		public class MarkerObject
 		{
-			public int markerId;
+            public int markerId;
 			public GameObject markerPrefab;
 		}
 
 		public class MarkerOnScene
-		{
-			public int bestMatchIndex = -1;
+		{            
+            public int bestMatchIndex = -1;
 			public float destroyAt = -1f;
 			public GameObject gameObject = null;
 		}
@@ -157,7 +159,9 @@ namespace PaperPlaneTools.AR {
 
 			//Create objects for markers not matched with any game object
 			foreach (int markerIndex in foundedMarkers) {
-				GameObject gameObject = Instantiate(markerObject.markerPrefab);
+                GameObject gameObject = Instantiate(markerObject.markerPrefab);
+                gameObject.transform.SetParent(player.GetComponent<Transform>());
+
 				MarkerOnScene markerOnScene = new MarkerOnScene() {
 					gameObject = gameObject
 				};
