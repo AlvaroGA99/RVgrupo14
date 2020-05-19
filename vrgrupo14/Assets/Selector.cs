@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Selector : MonoBehaviour
 {
-   
+    public GameObject observado;
     int contador = 3;
     public void inp()
     {
@@ -23,5 +24,6 @@ public class Selector : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         Debug.Log("Countdown Complete!");
+        
     }
 }
