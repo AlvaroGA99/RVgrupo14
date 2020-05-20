@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Selector : MonoBehaviour
 {
-    public GameObject observado;
-    int contador = 3;
+    
+    [SerializeField]int contador = 3;
     public void inp()
     {
         StartCoroutine("Countdown", contador);
