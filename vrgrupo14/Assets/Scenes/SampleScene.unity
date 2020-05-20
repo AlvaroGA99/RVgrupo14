@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 1118834787}
   - component: {fileID: 1118834786}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: salir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,7 +225,7 @@ BoxCollider:
   m_GameObject: {fileID: 1118834781}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -526,6 +526,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8820615200873862107, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: recorderFoldout
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8820615201002211432, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -535,6 +540,88 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[2].markerId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[2].markerPrefab
+      value: 
+      objectReference: {fileID: 8947106694397583393, guid: 04fcdb500dc9ccd42b4edc1ff38e8390,
+        type: 3}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[3].markerId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[3].markerPrefab
+      value: 
+      objectReference: {fileID: 4175051952266607259, guid: d27430a11c8406d419f00f1d7b3fab1b,
+        type: 3}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[4].markerId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[4].markerPrefab
+      value: 
+      objectReference: {fileID: 2964672007283073008, guid: c363ea7a9b52bf041acda58940dde962,
+        type: 3}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[5].markerId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[5].markerPrefab
+      value: 
+      objectReference: {fileID: 7850653971382618344, guid: c2c5ee4b77db1b147b29ef9e74c15b19,
+        type: 3}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[6].markerId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[6].markerPrefab
+      value: 
+      objectReference: {fileID: 827408309142028557, guid: 4c1ebfc8eecf74c45a17ca32719df668,
+        type: 3}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[0].markerPrefab
+      value: 
+      objectReference: {fileID: 1833048384861988951, guid: 7e49ddaf686ddc04c9a414d218c54aac,
+        type: 3}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[1].markerPrefab
+      value: 
+      objectReference: {fileID: 7213647064572180891, guid: 600fe5803cbc8a1419cbd1d31d10e113,
+        type: 3}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[0].markerId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: markers.Array.data[1].markerId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8820615201882105353, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
