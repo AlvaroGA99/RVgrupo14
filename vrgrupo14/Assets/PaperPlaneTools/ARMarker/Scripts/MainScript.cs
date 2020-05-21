@@ -100,15 +100,20 @@ namespace PaperPlaneTools.AR {
 
 		private void ProcessMarkesWithSameId(MarkerObject markerObject, List<MarkerOnScene> gameObjects, List<int> foundedMarkers) {
 			int index = 0;
-		
-			index = gameObjects.Count - 1;
+            
+            index = gameObjects.Count - 1;
 			while (index >= 0) {
-				MarkerOnScene markerOnScene = gameObjects[index];
+                MarkerOnScene markerOnScene = gameObjects[index];
 				markerOnScene.bestMatchIndex = -1;
 				if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime) {
-					Destroy(markerOnScene.gameObject);
-					gameObjects.RemoveAt(index);
-				}
+                    markerOnScene.gameObject.transform.parent = null;
+                    //Destroy(markerOnScene.gameObject);
+                    //gameObjects.RemoveAt(index);
+                }
+                else
+                {
+                    markerOnScene.gameObject.transform.parent = player.GetComponent<Transform>();
+                }
 				--index;
 			}
 
@@ -161,7 +166,7 @@ namespace PaperPlaneTools.AR {
 			foreach (int markerIndex in foundedMarkers) {
                 GameObject gameObject = Instantiate(markerObject.markerPrefab);
                 Debug.Log("hola buenos dias");
-                gameObject.transform.SetParent(player.GetComponent<Transform>());
+                //gameObject.transform.SetParent(player.GetComponent<Transform>());
 
 				MarkerOnScene markerOnScene = new MarkerOnScene() {
 					gameObject = gameObject
