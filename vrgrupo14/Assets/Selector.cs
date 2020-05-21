@@ -16,7 +16,6 @@ public class Selector : MonoBehaviour
     public static bool flag_sound;
     public static bool flag_remove = false;
     Scene scene;
-    public GameObject ambiental;
 
     public void sincronizar()
     {
@@ -78,7 +77,7 @@ public class Selector : MonoBehaviour
 
     private void Start()
     {
-        flag_exit = false; flag_enter = false;
+        flag_exit = false; flag_enter = false; flag_remove = false;
         scene = SceneManager.GetActiveScene();
         sincronizar();
     }
@@ -107,12 +106,15 @@ public class Selector : MonoBehaviour
         {
             flag_remove = false;
         }
-        if (!AudioTime.flag_ambiente)
+        if (scene.name == "GameScene")
         {
-            GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
+            if (!AudioTime.flag_ambiente)
+            {
+                GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
 
-        }else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
-
+            }
+            else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
+        }
     }
 
 

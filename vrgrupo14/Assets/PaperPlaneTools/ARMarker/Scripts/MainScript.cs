@@ -113,6 +113,7 @@ namespace PaperPlaneTools.AR {
                     markerOnScene.gameObject.transform.parent = null;
                     if (Selector.flag_remove)
                     {
+                        Debug.Log("babababab");
                         AudioTime.flag_ambiente = true;
                         Destroy(markerOnScene.gameObject);
                         gameObjects.RemoveAt(index);
