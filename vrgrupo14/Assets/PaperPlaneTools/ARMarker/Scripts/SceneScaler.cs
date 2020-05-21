@@ -10,7 +10,7 @@
 	/// </summary>
 	public class SceneScaler : MonoBehaviour {
 		public Camera arCamera;
-		public GameObject outputSurface;
+		//public GameObject outputSurface;
 
 		private Vector2 ScreenSize {
 			get;
@@ -29,13 +29,13 @@
 		}
 		
 		void Update () {
-			Vector2 compontSize = outputSurface.GetComponent<RectTransform>().sizeDelta;
-			if (Screen.width != ScreenSize.x || Screen.height != ScreenSize.y || compontSize.x != ComponentSize.x || compontSize.y != ComponentSize.y) {
-				ScreenSize = new Vector2 (Screen.width, Screen.height);
-				ComponentSize = compontSize;
+			//Vector2 compontSize = outputSurface.GetComponent<RectTransform>().sizeDelta;
+			//if (Screen.width != ScreenSize.x || Screen.height != ScreenSize.y || compontSize.x != ComponentSize.x || compontSize.y != ComponentSize.y) {
+				//ScreenSize = new Vector2 (Screen.width, Screen.height);
+				//ComponentSize = compontSize;
 				
-				Scale();
-			}
+				//Scale();
+			//}
 		}
 
 		void Scale() {
@@ -61,7 +61,7 @@
 				aspect = aspectWidth;
 			}
 
-			outputSurface.transform.localScale = new Vector3 (aspect, aspect, 1.0f);
+			//outputSurface.transform.localScale = new Vector3 (aspect, aspect, 1.0f);
 
 			AdjustFOV (imageSize);
 		}
