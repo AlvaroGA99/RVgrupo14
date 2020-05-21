@@ -70,14 +70,17 @@ namespace PaperPlaneTools.AR {
 				//webCamDevice = WebCamTexture.devices [cameraIndex];
 			}
 		}
-
+        
         protected override bool ProcessTexture(WebCamTexture input, ref Texture2D output)
         {
-            var texture = new Texture2D(input.width, input.height);
+           var texture = new Texture2D(input.width, input.height);
+            
             texture.SetPixels(input.GetPixels());
             var img = Unity.TextureToMat(texture, Unity.TextureConversionParams.Default);
-            ProcessFrame(img, img.Cols, img.Rows);
+           ProcessFrame(img, img.Cols, img.Rows);
             output = Unity.MatToTexture(img, output);
+            UnityEngine.Object.Destroy(texture);
+
             return true;
         }
 

@@ -133,8 +133,8 @@ ed916f285d5522ec5ceb6eccef8d0072 Assembly-CSharp.dll:GoogleVR.VideoDemo.SwitchVi
 11182ae33aeebaa701c6f03cb7f19976 Assembly-CSharp.dll:.GvrKeyboard
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:OpenCvSharp.Demo.DocumentScannerScript
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
-54548158315b0e9403372a30c5d6c4b7 Assembly-CSharp.dll:PaperPlaneTools.AR.MainScript
-a2c8fd6e594def0f47508afe86c8170e Assembly-CSharp.dll:PaperPlaneTools.AR.SceneScaler
+bfda9025f1bb2c924a0245c3035ff380 Assembly-CSharp.dll:PaperPlaneTools.AR.MainScript
+4a7f800e03362783afdef7332397b675 Assembly-CSharp.dll:PaperPlaneTools.AR.SceneScaler
 b92e38c06f34871515c9b102fcbc7ae1 Assembly-CSharp.dll:.ResonanceAudioDemoManager
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 bf3913f0d6c694bf20e1d681c79a4993 Assembly-CSharp.dll:GoogleVR.Beta.Demos.DemoObjectController6DoF
