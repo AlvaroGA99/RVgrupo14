@@ -29,7 +29,6 @@ namespace GoogleVR.HelloVR
         /// The material to use when this object is inactive (not being gazed at).
         /// </summary>
         public Material inactiveMaterial;
-
         /// <summary>The material to use when this object is active (gazed at).</summary>
         public Material gazedAtMaterial;
 
@@ -42,6 +41,7 @@ namespace GoogleVR.HelloVR
         /// </param>
         public void SetGazedAt(bool gazedAt)
         {
+            
             if (inactiveMaterial != null && gazedAtMaterial != null)
             {
                 myRenderer.material = gazedAt ? gazedAtMaterial : inactiveMaterial;
@@ -122,5 +122,6 @@ namespace GoogleVR.HelloVR
             myRenderer = GetComponent<Renderer>();
             SetGazedAt(false);
         }
+        
     }
 }

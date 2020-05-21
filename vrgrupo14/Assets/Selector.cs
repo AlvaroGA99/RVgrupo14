@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 
+
 public class Selector : MonoBehaviour
 {
     
@@ -13,7 +14,9 @@ public class Selector : MonoBehaviour
     public static bool flag_exit = false;
     public static bool flag_enter = false;
     public static bool flag_sound;
+    public static bool flag_remove = false;
     Scene scene;
+    public GameObject ambiental;
 
     public void sincronizar()
     {
@@ -29,6 +32,16 @@ public class Selector : MonoBehaviour
         StopCoroutine("Countdown");
     }
 
+    public void borrarInp()
+    {
+        StartCoroutine("Countdown2", contador);
+    }
+    public void borrarOutp()
+    {
+        contador = 3;
+        StopCoroutine("Countdown2");
+    }
+
     private IEnumerator Countdown(int contador)
     {
         while (contador > 0)
@@ -37,7 +50,20 @@ public class Selector : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         Debug.Log("Countdown Complete!");
-        flag_exit = true; flag_enter = true;
+
+        flag_exit = true;
+        flag_enter = true;
+    }
+    private IEnumerator Countdown2(int contador)
+    {
+        while (contador > 0)
+        {
+            Debug.Log(contador--);
+            yield return new WaitForSeconds(1);
+        }
+        Debug.Log("Countdown Complete!");
+
+        flag_remove = true;
     }
 
     private void Awake()
@@ -77,7 +103,15 @@ public class Selector : MonoBehaviour
             SceneManager.LoadScene("GameScene");
 
         }
+        if (flag_remove)
+        {
+            flag_remove = false;
+        }
+        if (!AudioTime.flag_ambiente)
+        {
+            GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
 
+        }else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
 
     }
 

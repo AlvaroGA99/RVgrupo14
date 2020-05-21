@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8820615200873862106}
   - component: {fileID: 8820615200873862107}
   - component: {fileID: 8820615200873862108}
+  - component: {fileID: 1233746931}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -104,7 +105,7 @@ MonoBehaviour:
   stereoSpeakerModeEnabled: 0
   recorderSeamless: 0
   recorderSourceTag: Untagged
-  recorderFoldout: 0
+  recorderFoldout: 1
 --- !u!114 &8820615200873862108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +122,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxRaycastHits: 64
+--- !u!114 &1233746931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820615200873862110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1742909100, guid: ed7343f30e3843b3afda8f8b02669cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Device: 0
+  m_PoseSource: 3
+  m_PoseProviderComponent: {fileID: 0}
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_UseRelativeTransform: 1
 --- !u!1 &8820615201605477271
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +150,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8820615201605477268}
   - component: {fileID: 8820615201605477269}
-  - component: {fileID: 8820615201605477270}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -165,27 +183,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2d233565a224e7fb9f7a98cea9e3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Surface: {fileID: 0}
   player: {fileID: 8820615200873862110}
   markers:
+  - markerId: 1
+    markerPrefab: {fileID: 1833048384861988951, guid: 7e49ddaf686ddc04c9a414d218c54aac,
+      type: 3}
+  - markerId: 2
+    markerPrefab: {fileID: 7213647064572180891, guid: 600fe5803cbc8a1419cbd1d31d10e113,
+      type: 3}
+  - markerId: 3
+    markerPrefab: {fileID: 8947106694397583393, guid: 04fcdb500dc9ccd42b4edc1ff38e8390,
+      type: 3}
+  - markerId: 4
+    markerPrefab: {fileID: 4175051952266607259, guid: d27430a11c8406d419f00f1d7b3fab1b,
+      type: 3}
   - markerId: 5
-    markerPrefab: {fileID: 192324, guid: 2cd155db0d1184f53b38a39be9667f6f, type: 3}
-  - markerId: 23
-    markerPrefab: {fileID: 127862, guid: 0677871dc074142beb6deba55e316d31, type: 3}
---- !u!114 &8820615201605477270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8820615201605477271}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d626953ff014bec8271e5c8441fd2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arCamera: {fileID: 0}
-  outputSurface: {fileID: 0}
+    markerPrefab: {fileID: 2964672007283073008, guid: c363ea7a9b52bf041acda58940dde962,
+      type: 3}
+  - markerId: 6
+    markerPrefab: {fileID: 7850653971382618344, guid: c2c5ee4b77db1b147b29ef9e74c15b19,
+      type: 3}
+  - markerId: 7
+    markerPrefab: {fileID: 827408309142028557, guid: 4c1ebfc8eecf74c45a17ca32719df668,
+      type: 3}
 --- !u!1 &8820615201882105354
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contador: 3
+  ambiental: {fileID: 0}
 --- !u!1001 &8820615202131782727
 PrefabInstance:
   m_ObjectHideFlags: 0
