@@ -8,7 +8,7 @@ public class AudioTime : MonoBehaviour
     {
         this.gameObject.GetComponent<AudioSource>().enabled = false;
     }
-    void Update()
+    void FixedUpdate()
     {
         if (Selector.tempo_control <= Mathf.Epsilon) {
             Selector.flag_sound = false;

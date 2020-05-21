@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 
 public class Selector : MonoBehaviour
@@ -37,6 +38,16 @@ public class Selector : MonoBehaviour
         }
         Debug.Log("Countdown Complete!");
         flag_exit = true; flag_enter = true;
+    }
+
+    private void Awake()
+    {
+#if PLATFORM_ANDROID
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+#endif
     }
 
     private void Start()
