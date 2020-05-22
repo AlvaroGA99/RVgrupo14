@@ -13,8 +13,9 @@ public class Selector : MonoBehaviour
     public static double tempo_control = tempo;
     public static bool flag_exit = false;
     public static bool flag_enter = false;
-    public static bool flag_sound;
     public static bool flag_remove = false;
+    public static bool flag_ambiente = false;
+    public static bool flag_sound = false;
     Scene scene;
 
     public void sincronizar()
@@ -80,15 +81,18 @@ public class Selector : MonoBehaviour
         flag_exit = false; flag_enter = false; flag_remove = false;
         scene = SceneManager.GetActiveScene();
         sincronizar();
+        flag_ambiente = true;
+        tempo_control = 0;
     }
     private void FixedUpdate()
     {
         if (flag_sound)
         {
             tempo_control -= Time.deltaTime;
-           // Debug.Log(tempo_control);
+            Debug.Log(tempo_control);//
         }
         else sincronizar();
+        
 
         if (flag_exit && scene.name == "GameScene")
         {
@@ -102,13 +106,9 @@ public class Selector : MonoBehaviour
             SceneManager.LoadScene("GameScene");
 
         }
-        if (flag_remove)
-        {
-            flag_remove = false;
-        }
         if (scene.name == "GameScene")
         {
-            if (!AudioTime.flag_ambiente)
+            if (!flag_ambiente)
             {
                 GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
 
@@ -116,7 +116,5 @@ public class Selector : MonoBehaviour
             else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
         }
     }
-
-
 
 }

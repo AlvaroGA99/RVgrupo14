@@ -110,13 +110,15 @@ namespace PaperPlaneTools.AR {
 				markerOnScene.bestMatchIndex = -1;
                 if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
                 {
+                    Debug.Log("krkrkrkrrk");
                     markerOnScene.gameObject.transform.parent = null;
                     if (Selector.flag_remove)
                     {
                         Debug.Log("babababab");
-                        AudioTime.flag_ambiente = true;
+                        Selector.flag_ambiente = true;
                         Destroy(markerOnScene.gameObject);
                         gameObjects.RemoveAt(index);
+                        Selector.flag_remove = false;
                     }
                 }
                 else
@@ -155,6 +157,7 @@ namespace PaperPlaneTools.AR {
 			}
 
 			//Destroy excessive objects
+            
 			index = gameObjects.Count - 1;
 			while (index >= 0) {
 				MarkerOnScene markerOnScene = gameObjects[index];
