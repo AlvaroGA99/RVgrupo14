@@ -17,6 +17,8 @@ public class Selector : MonoBehaviour
     public static bool flag_remove = false;
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
+    public bool mov = false;
+    
     Scene scene;
 
     public void sincronizar()
@@ -67,6 +69,14 @@ public class Selector : MonoBehaviour
         flag_remove = true;
     }
 
+    public static bool delante(bool x)
+    {
+        return x;
+    }
+    public static bool detras(bool x) { return x; }
+    public static bool derecha(bool x) { return x; }
+    public static bool izquierda(bool x) { return x; }
+
     private void Awake()
     {
 #if PLATFORM_ANDROID
@@ -87,8 +97,24 @@ public class Selector : MonoBehaviour
 
         tempo_control = 0;
     }
+
+    public void INmovement()
+    {
+        mov = true;
+    }
+    public void OUTmovement()
+    {
+        mov = false;
+    }
+
+
     private void FixedUpdate()
     {
+        if (mov)
+        {
+            //this.transform.localPosition = new Vector3(this.transform.localPosition.x + 0.015f, this.transform.localPosition.y, this.transform.localPosition.z);
+            this.transform.localPosition += this.transform.forward*0.015f;
+        }
         if (flag_sound)
         {
             tempo_control -= Time.deltaTime;
