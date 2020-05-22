@@ -17,8 +17,11 @@ public class Selector : MonoBehaviour
     public static bool flag_remove = false;
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
-    public bool mov = false;
-    
+    public bool movW = false;
+    public bool movD = false;
+    public bool movS = false;
+    public bool movA = false;
+
     Scene scene;
 
     public void sincronizar()
@@ -98,22 +101,49 @@ public class Selector : MonoBehaviour
         tempo_control = 0;
     }
 
-    public void INmovement()
+    public void movement_W()
     {
-        mov = true;
+        movW = true;
+    }
+    public void movement_A()
+    {
+        movA = true;
+    }
+    public void movement_S()
+    {
+        movS = true;
+    }
+    public void movement_D()
+    {
+        movD = true;
     }
     public void OUTmovement()
     {
-        mov = false;
+        movA = false; movS = false; movD = false; movW = false;
     }
 
 
     private void FixedUpdate()
     {
-        if (mov)
+        if (movW)
         {
-            //this.transform.localPosition = new Vector3(this.transform.localPosition.x + 0.015f, this.transform.localPosition.y, this.transform.localPosition.z);
-            this.transform.localPosition += this.transform.forward*0.015f;
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + 0.015f);
+            
+        }
+        if (movS)
+        {
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z - 0.015f);
+            
+        }
+        if (movA)
+        {
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x - 0.015f, this.transform.localPosition.y, this.transform.localPosition.z);
+            
+        }
+        if (movD)
+        {
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x + 0.015f, this.transform.localPosition.y, this.transform.localPosition.z);
+            
         }
         if (flag_sound)
         {
