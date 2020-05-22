@@ -73,11 +73,11 @@ namespace PaperPlaneTools.AR {
         
         protected override bool ProcessTexture(WebCamTexture input, ref Texture2D output)
         {
-           var texture = new Texture2D(input.width, input.height);
+            var texture = new Texture2D(input.width, input.height);
             
             texture.SetPixels(input.GetPixels());
             var img = Unity.TextureToMat(texture, Unity.TextureConversionParams.Default);
-           ProcessFrame(img, img.Cols, img.Rows);
+            ProcessFrame(img, img.Cols, img.Rows);
             output = Unity.MatToTexture(img, output);
             UnityEngine.Object.Destroy(texture);
 
@@ -112,6 +112,7 @@ namespace PaperPlaneTools.AR {
                 {
                     Debug.Log("krkrkrkrrk");
                     markerOnScene.gameObject.transform.parent = null;
+
                     if (Selector.flag_remove)
                     {
                         Debug.Log("babababab");

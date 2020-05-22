@@ -89,7 +89,7 @@ public class Selector : MonoBehaviour
         if (flag_sound)
         {
             tempo_control -= Time.deltaTime;
-            Debug.Log(tempo_control);//
+            Debug.Log(tempo_control);
         }
         else sincronizar();
         

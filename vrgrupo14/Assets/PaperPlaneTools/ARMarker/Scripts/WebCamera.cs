@@ -160,7 +160,7 @@ namespace PaperPlaneTools.AR
 		/// </summary>
 		private void Update ()
 		{
-            /*
+            
 			if (webCamTexture != null && webCamTexture.didUpdateThisFrame)
 			{
 				// this must be called continuously
@@ -171,7 +171,7 @@ namespace PaperPlaneTools.AR
 				{
 					RenderFrame();
 				}
-			}*/
+			}
 		}
 
 		/// <summary>
