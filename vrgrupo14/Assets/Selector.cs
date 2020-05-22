@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Selector : MonoBehaviour
 {
-    
-    [SerializeField]int contador = 3;
+
+    [SerializeField] int contador = 3;
+    [SerializeField] int contador2 = 1;
     public static double tempo = 9;
     public static double tempo_control = tempo;
     public static bool flag_exit = false;
@@ -34,11 +35,11 @@ public class Selector : MonoBehaviour
 
     public void borrarInp()
     {
-        StartCoroutine("Countdown2", contador);
+        StartCoroutine("Countdown2", contador2);
     }
     public void borrarOutp()
     {
-        contador = 3;
+        contador2 = 1;
         StopCoroutine("Countdown2");
     }
 
@@ -46,22 +47,22 @@ public class Selector : MonoBehaviour
     {
         while (contador > 0)
         {
-            Debug.Log(contador--);
+            contador--;
             yield return new WaitForSeconds(1);
         }
-        Debug.Log("Countdown Complete!");
+        //Debug.Log("Countdown Complete!");
 
         flag_exit = true;
         flag_enter = true;
     }
-    private IEnumerator Countdown2(int contador)
+    private IEnumerator Countdown2(int contador2)
     {
-        while (contador > 0)
+        while (contador2 > 0)
         {
-            Debug.Log(contador--);
+            contador2--;
             yield return new WaitForSeconds(1);
         }
-        Debug.Log("Countdown Complete!");
+        //Debug.Log("Countdown Complete!");
 
         flag_remove = true;
     }
@@ -74,6 +75,7 @@ public class Selector : MonoBehaviour
             Permission.RequestUserPermission(Permission.Camera);
         }
 #endif
+
     }
 
     private void Start()
@@ -82,6 +84,7 @@ public class Selector : MonoBehaviour
         scene = SceneManager.GetActiveScene();
         sincronizar();
         flag_ambiente = true;
+
         tempo_control = 0;
     }
     private void FixedUpdate()
@@ -89,7 +92,7 @@ public class Selector : MonoBehaviour
         if (flag_sound)
         {
             tempo_control -= Time.deltaTime;
-            Debug.Log(tempo_control);
+            //Debug.Log(tempo_control);
         }
         else sincronizar();
         

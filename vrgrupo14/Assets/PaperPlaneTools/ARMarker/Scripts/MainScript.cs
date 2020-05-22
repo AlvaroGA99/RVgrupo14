@@ -7,8 +7,9 @@ namespace PaperPlaneTools.AR {
 	using System;
 	using System.Collections.Generic;
 	using UnityEngine.UI;
-	
-	public class MainScript: WebCamera {
+    using UnityEngine.SceneManagement;
+
+    public class MainScript: WebCamera {
         public GameObject player;
 
         [Serializable]
@@ -104,22 +105,27 @@ namespace PaperPlaneTools.AR {
 		private void ProcessMarkesWithSameId(MarkerObject markerObject, List<MarkerOnScene> gameObjects, List<int> foundedMarkers) {
 			int index = 0;
             
+            
             index = gameObjects.Count - 1;
 			while (index >= 0) {
                 MarkerOnScene markerOnScene = gameObjects[index];
 				markerOnScene.bestMatchIndex = -1;
                 if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
                 {
-                    Debug.Log("krkrkrkrrk");
                     markerOnScene.gameObject.transform.parent = null;
 
                     if (Selector.flag_remove)
                     {
-                        Debug.Log("babababab");
-                        Selector.flag_ambiente = true;
+                        
+                        
                         Destroy(markerOnScene.gameObject);
-                        gameObjects.RemoveAt(index);
+                        gameObjects.Clear();
+                        Destroy(GameObject.FindGameObjectWithTag("sonidos"));
                         Selector.flag_remove = false;
+                        Selector.flag_ambiente = true;
+                        
+                        SceneManager.LoadScene("GameScene");
+                       
                     }
                 }
                 else
@@ -127,6 +133,7 @@ namespace PaperPlaneTools.AR {
                     markerOnScene.gameObject.transform.parent = player.GetComponent<Transform>();
                 }
 				--index;
+                
 			}
 
 			index = foundedMarkers.Count - 1;

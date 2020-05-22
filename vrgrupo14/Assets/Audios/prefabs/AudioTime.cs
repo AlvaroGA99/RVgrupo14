@@ -12,15 +12,13 @@ public class AudioTime : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (Selector.tempo_control <= Mathf.Epsilon) {
+        if (Selector.tempo_control <= 0) {
             //como sincronizar las canciones en fase: mago.mago.mago(mago);
             Selector.flag_ambiente = false;
             this.gameObject.GetComponent<AudioSource>().enabled = false;
             this.gameObject.GetComponent<AudioSource>().enabled = true;
             Selector.flag_sound = false;
-            
-            
-            
+                        
         }
 
     }

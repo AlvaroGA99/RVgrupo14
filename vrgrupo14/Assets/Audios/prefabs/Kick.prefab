@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6575976116550253641}
   m_Layer: 0
   m_Name: Kick
-  m_TagString: Untagged
+  m_TagString: sonidos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
