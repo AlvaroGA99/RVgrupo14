@@ -118,7 +118,7 @@ namespace PaperPlaneTools.AR {
                     {
                         
                         
-                        Destroy(markerOnScene.gameObject);
+                        //Destroy(markerOnScene.gameObject);
                         gameObjects.Clear();
                         Destroy(GameObject.FindGameObjectWithTag("sonidos"));
                         Selector.flag_remove = false;
