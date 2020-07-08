@@ -25,6 +25,8 @@ namespace GoogleVR.HelloVR
     [RequireComponent(typeof(Collider))]
     public class ObjectController : MonoBehaviour
     {
+        public bool IsGazed = false;
+
         /// <summary>
         /// The material to use when this object is inactive (not being gazed at).
         /// </summary>
@@ -41,7 +43,7 @@ namespace GoogleVR.HelloVR
         /// </param>
         public void SetGazedAt(bool gazedAt)
         {
-            
+            IsGazed = gazedAt;
             if (inactiveMaterial != null && gazedAtMaterial != null)
             {
                 myRenderer.material = gazedAt ? gazedAtMaterial : inactiveMaterial;

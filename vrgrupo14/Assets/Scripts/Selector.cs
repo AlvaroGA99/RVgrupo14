@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GoogleVR.HelloVR;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
@@ -8,21 +9,30 @@ using UnityEngine.SceneManagement;
 public class Selector : MonoBehaviour
 {
 
-    [SerializeField] int contador = 3;
-    [SerializeField] int contador2 = 1;
-    public static double tempo = 9;
-    public static double tempo_control = tempo;
-    public static bool flag_exit = false;
-    public static bool flag_enter = false;
+    [SerializeField] int contador = 3; //interfaz general
+    [SerializeField] int contador2 = 1; //funciones propias
+    public static double tempo = 9; //tempo de los sonidos para sincronizar
+    public static double tempo_control = tempo; 
+
+    //flags de interfaz y control
+    public static bool Selection_Flag = false; 
     public static bool flag_remove = false;
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
+
+    //movimiento
     public bool movW = false;
     public bool movD = false;
     public bool movS = false;
     public bool movA = false;
 
     Scene scene;
+
+    //salas de musica
+    public GameObject Sala0; //Menu principal
+    public GameObject Sala1; //sala Electronica
+    public GameObject Sala2; //sala Orquestal
+    
 
     public void sincronizar()
     {
@@ -38,17 +48,7 @@ public class Selector : MonoBehaviour
         StopCoroutine("Countdown");
     }
 
-    public void borrarInp()
-    {
-        StartCoroutine("Countdown2", contador2);
-    }
-    public void borrarOutp()
-    {
-        contador2 = 1;
-        StopCoroutine("Countdown2");
-    }
-
-    private IEnumerator Countdown(int contador)
+    private IEnumerator Countdown(int contador) //contador general para la interfaz
     {
         while (contador > 0)
         {
@@ -56,21 +56,9 @@ public class Selector : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         //Debug.Log("Countdown Complete!");
-
-        flag_exit = true;
-        flag_enter = true;
+        Selection_Flag = true;
     }
-    private IEnumerator Countdown2(int contador2)
-    {
-        while (contador2 > 0)
-        {
-            contador2--;
-            yield return new WaitForSeconds(1);
-        }
-        //Debug.Log("Countdown Complete!");
 
-        flag_remove = true;
-    }
 
     public static bool delante(bool x)
     {
@@ -93,11 +81,11 @@ public class Selector : MonoBehaviour
 
     private void Start()
     {
-        flag_exit = false; flag_enter = false; flag_remove = false;
+        Selection_Flag = false; flag_remove = false;
         scene = SceneManager.GetActiveScene();
         sincronizar();
         flag_ambiente = true;
-
+        contador = 3;
         tempo_control = 0;
     }
 
@@ -123,7 +111,7 @@ public class Selector : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if (movW)
         {
@@ -152,21 +140,12 @@ public class Selector : MonoBehaviour
         }
         else sincronizar();
         
-
-        if (flag_exit && scene.name == "GameScene")
+        if (Selection_Flag && Sala0.GetComponent<ObjectController>().IsGazed)
         {
-            flag_exit = false;
+            Selection_Flag = false;
+            
             SceneManager.LoadScene("StartMenu");
 
-        }
-        if (flag_enter && scene.name == "StartMenu")
-        {
-            flag_enter = false;
-            SceneManager.LoadScene("GameScene");
-
-        }
-        if (scene.name == "GameScene")
-        {
             if (!flag_ambiente)
             {
                 GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
@@ -174,6 +153,23 @@ public class Selector : MonoBehaviour
             }
             else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
         }
+
+        if (Selection_Flag && Sala1.GetComponent<ObjectController>().IsGazed) 
+        {
+            Selection_Flag = false;
+            
+            SceneManager.LoadScene("Electronica");
+
+        }
+        
+        if (Selection_Flag && Sala2.GetComponent<ObjectController>().IsGazed)
+        {
+            Selection_Flag = false;
+            
+            SceneManager.LoadScene("Orquestal");
+
+        }
+        
     }
 
 }

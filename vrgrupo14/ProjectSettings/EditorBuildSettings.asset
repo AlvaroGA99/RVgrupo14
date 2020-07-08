@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 152845486f036b64890ed32305387c35
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/Electronica.unity
     guid: 0a44f1bb2ab17ca4fb3a1e850df461af
+  - enabled: 1
+    path: Assets/Scenes/Orquestal.unity
+    guid: a29216f674060da4bbcf14b7e497e8d8
   m_configObjects: {}
