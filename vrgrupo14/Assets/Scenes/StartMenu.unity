@@ -1285,6 +1285,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: leftWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: rightWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: floor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: ceiling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: backWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: frontWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: reflectivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240738019862293, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8927883954120885258, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: m_Name
