@@ -122,7 +122,7 @@ namespace PaperPlaneTools.AR {
                         //gameObjects.Clear();
                         Destroy(GameObject.FindGameObjectWithTag("sonidos"));
                         Selector.flag_remove = false;
-                        Selector.flag_ambiente = true;
+                        //Selector.flag_ambiente = true;
                         
                         SceneManager.LoadScene("GameScene");
                        

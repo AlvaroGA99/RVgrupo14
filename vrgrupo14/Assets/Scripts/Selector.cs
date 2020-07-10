@@ -135,23 +135,25 @@ public class Selector : MonoBehaviour
         }
         if (flag_sound)
         {
+            Debug.Log("hola1234");            
             tempo_control -= Time.deltaTime;
             //Debug.Log(tempo_control);
         }
         else sincronizar();
         
+        if (!flag_ambiente)
+        {
+            GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
+            Debug.Log("hola");
+        }
+
+        //else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
+
         if (Selection_Flag && Sala0.GetComponent<ObjectController>().IsGazed)
         {
             Selection_Flag = false;
             
             SceneManager.LoadScene("StartMenu");
-
-            if (!flag_ambiente)
-            {
-                GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
-
-            }
-            else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
         }
 
         if (Selection_Flag && Sala1.GetComponent<ObjectController>().IsGazed) 
