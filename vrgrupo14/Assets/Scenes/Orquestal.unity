@@ -584,9 +584,9 @@ MonoBehaviour:
   movD: 0
   movS: 0
   movA: 0
-  Sala0: {fileID: 0}
-  Sala1: {fileID: 0}
-  Sala2: {fileID: 0}
+  Sala0: {fileID: 760636824}
+  Sala1: {fileID: 1230140172}
+  Sala2: {fileID: 1954496928}
 --- !u!1 &1230140172
 GameObject:
   m_ObjectHideFlags: 0

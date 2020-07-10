@@ -496,9 +496,9 @@ MonoBehaviour:
   movD: 0
   movS: 0
   movA: 0
-  Sala0: {fileID: 0}
-  Sala1: {fileID: 0}
-  Sala2: {fileID: 0}
+  Sala0: {fileID: 1118834781}
+  Sala1: {fileID: 30868243}
+  Sala2: {fileID: 1438544938}
 --- !u!1001 &817754757
 PrefabInstance:
   m_ObjectHideFlags: 0

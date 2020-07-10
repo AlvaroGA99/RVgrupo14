@@ -134,8 +134,7 @@ public class Selector : MonoBehaviour
             
         }
         if (flag_sound)
-        {
-            Debug.Log("hola1234");            
+        {                       
             tempo_control -= Time.deltaTime;
             //Debug.Log(tempo_control);
         }
@@ -143,8 +142,7 @@ public class Selector : MonoBehaviour
         
         if (!flag_ambiente)
         {
-            GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;
-            Debug.Log("hola");
+            GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;            
         }
 
         //else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;

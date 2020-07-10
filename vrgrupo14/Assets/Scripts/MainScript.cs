@@ -184,8 +184,7 @@ namespace PaperPlaneTools.AR {
 
 			//Create objects for markers not matched with any game object
 			foreach (int markerIndex in foundedMarkers) {
-                GameObject gameObject = Instantiate(markerObject.markerPrefab);
-                Debug.Log("hola buenos dias");
+                GameObject gameObject = Instantiate(markerObject.markerPrefab);                
                 //gameObject.transform.SetParent(player.GetComponent<Transform>());
 
 				MarkerOnScene markerOnScene = new MarkerOnScene() {
