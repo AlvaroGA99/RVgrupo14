@@ -8,14 +8,21 @@ using UnityEngine.SceneManagement;
 
 public class Selector : MonoBehaviour
 {
-
+    [SerializeField]private GameObject Movement;
+    [SerializeField]private GameObject Room;
     [SerializeField] int contador = 3; //interfaz general
     [SerializeField] int contador2 = 1; //funciones propias
+
+    [SerializeField] float velocity = 15f;
+    [SerializeField] float scaleValue = 0.5f;
+    Vector3 scaleVec;
+    int scaleAxis;
     public static double tempo = 9; //tempo de los sonidos para sincronizar
     public static double tempo_control = tempo; 
 
     //flags de interfaz y control
-    public static bool Selection_Flag = false; 
+    public static bool Selection_Flag = false;
+    public static bool flag_scale = false;
     public static bool flag_remove = false;
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
@@ -87,6 +94,17 @@ public class Selector : MonoBehaviour
         flag_ambiente = true;
         contador = 3;
         tempo_control = 0;
+        velocity *= 0.001f;
+    }
+
+    public void ScaleRoom(int axis){        
+        scaleAxis = axis;
+        flag_scale = true;
+    }
+
+    public void OUTscale()
+    {
+        flag_scale = false;
     }
 
     public void movement_W()
@@ -113,26 +131,42 @@ public class Selector : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if(flag_scale){
+            switch (scaleAxis){
+            case 0:
+                scaleVec = new Vector3(Room.transform.localScale.x + scaleValue, Room.transform.localScale.y, Room.transform.localScale.z);
+                break;
+            case 1:
+                scaleVec = new Vector3(Room.transform.localScale.x, Room.transform.localScale.y + scaleValue, Room.transform.localScale.z);
+                break;
+            case 2:
+                scaleVec = new Vector3(Room.transform.localScale.x, Room.transform.localScale.y, Room.transform.localScale.z + scaleValue);
+                break;
+        }
+            Room.transform.localScale = scaleVec;
+        }
+
         if (movW)
         {
-            this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + 0.015f);
-            
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + velocity);
+            Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x, Movement.transform.localPosition.y, Movement.transform.localPosition.z + velocity);            
         }
-        if (movS)
+        else if (movS)
         {
-            this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z - 0.015f);
-            
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z - velocity);
+            Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x, Movement.transform.localPosition.y, Movement.transform.localPosition.z - velocity);
         }
-        if (movA)
+        else if (movA)
         {
-            this.transform.localPosition = new Vector3(this.transform.localPosition.x - 0.015f, this.transform.localPosition.y, this.transform.localPosition.z);
-            
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x - velocity, this.transform.localPosition.y, this.transform.localPosition.z);
+            Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x - velocity, Movement.transform.localPosition.y, Movement.transform.localPosition.z);
         }
-        if (movD)
+        else if (movD)
         {
-            this.transform.localPosition = new Vector3(this.transform.localPosition.x + 0.015f, this.transform.localPosition.y, this.transform.localPosition.z);
-            
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x + velocity, this.transform.localPosition.y, this.transform.localPosition.z);
+            Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x + velocity, Movement.transform.localPosition.y, Movement.transform.localPosition.z);
         }
+
         if (flag_sound)
         {                       
             tempo_control -= Time.deltaTime;
