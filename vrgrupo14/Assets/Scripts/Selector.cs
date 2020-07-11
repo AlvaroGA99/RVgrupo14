@@ -10,13 +10,16 @@ public class Selector : MonoBehaviour
 {
     [SerializeField]private GameObject Movement;
     [SerializeField]private GameObject Room;
-    [SerializeField] int contador = 3; //interfaz general
-    [SerializeField] int contador2 = 1; //funciones propias
+    [SerializeField]private GameObject MenuControl;
+    [SerializeField]private GameObject General_Menu;
+
+    [SerializeField] int contador = 1; //interfaz general
 
     [SerializeField] float velocity = 15f;
     [SerializeField] float scaleValue = 0.5f;
     Vector3 scaleVec;
     int scaleAxis;
+    bool passScale;
     public static double tempo = 9; //tempo de los sonidos para sincronizar
     public static double tempo_control = tempo; 
 
@@ -38,8 +41,7 @@ public class Selector : MonoBehaviour
     //salas de musica
     public GameObject Sala0; //Menu principal
     public GameObject Sala1; //sala Electronica
-    public GameObject Sala2; //sala Orquestal
-    
+    public GameObject Sala2; //sala Orquestal   
 
     public void sincronizar()
     {
@@ -51,7 +53,7 @@ public class Selector : MonoBehaviour
         StartCoroutine("Countdown", contador);
     }
     public void outp() {
-        contador = 3;
+        contador = 1;
         StopCoroutine("Countdown");
     }
 
@@ -64,16 +66,7 @@ public class Selector : MonoBehaviour
         }
         //Debug.Log("Countdown Complete!");
         Selection_Flag = true;
-    }
-
-
-    public static bool delante(bool x)
-    {
-        return x;
-    }
-    public static bool detras(bool x) { return x; }
-    public static bool derecha(bool x) { return x; }
-    public static bool izquierda(bool x) { return x; }
+    } 
 
     private void Awake()
     {
@@ -92,11 +85,20 @@ public class Selector : MonoBehaviour
         scene = SceneManager.GetActiveScene();
         sincronizar();
         flag_ambiente = true;
-        contador = 3;
+        contador = 1;
         tempo_control = 0;
         velocity *= 0.001f;
     }
+//escalado de la sala
+    public void ScalePositive(int axis){
+        scaleValue = Mathf.Abs(scaleValue);        
+        ScaleRoom(axis);
+    }
 
+    public void ScaleNegative(int axis){
+        scaleValue = Mathf.Abs(scaleValue);        
+        ScaleRoom(axis);
+    }
     public void ScaleRoom(int axis){        
         scaleAxis = axis;
         flag_scale = true;
@@ -107,6 +109,7 @@ public class Selector : MonoBehaviour
         flag_scale = false;
     }
 
+//movimiento del jugador
     public void movement_W()
     {
         movW = true;
@@ -132,20 +135,25 @@ public class Selector : MonoBehaviour
     public void FixedUpdate()
     {
         if(flag_scale){
-            switch (scaleAxis){
+            switch (scaleAxis){                
             case 0:
-                scaleVec = new Vector3(Room.transform.localScale.x + scaleValue, Room.transform.localScale.y, Room.transform.localScale.z);
+                if ((Room.transform.localScale.x > 0.5f && scaleValue < 0) || (Room.transform.localScale.x < 10 && scaleValue > 0)){
+                    scaleVec = new Vector3(Room.transform.localScale.x + scaleValue, Room.transform.localScale.y, Room.transform.localScale.z);
+                }
                 break;
             case 1:
-                scaleVec = new Vector3(Room.transform.localScale.x, Room.transform.localScale.y + scaleValue, Room.transform.localScale.z);
+                if ((Room.transform.localScale.y > 0.5f && scaleValue < 0) || (Room.transform.localScale.y < 20 && scaleValue > 0)){
+                    scaleVec = new Vector3(Room.transform.localScale.x, Room.transform.localScale.y + scaleValue, Room.transform.localScale.z);
+                }
                 break;
             case 2:
-                scaleVec = new Vector3(Room.transform.localScale.x, Room.transform.localScale.y, Room.transform.localScale.z + scaleValue);
+                if ((Room.transform.localScale.z > 0.5f && scaleValue < 0) || (Room.transform.localScale.z < 10 && scaleValue > 0)){
+                    scaleVec = new Vector3(Room.transform.localScale.x, Room.transform.localScale.y, Room.transform.localScale.z + scaleValue);
+                }
                 break;
-        }
+            }
             Room.transform.localScale = scaleVec;
         }
-
         if (movW)
         {
             this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + velocity);
@@ -202,6 +210,17 @@ public class Selector : MonoBehaviour
             
             SceneManager.LoadScene("Orquestal");
 
+        }
+
+        if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){            
+            Selection_Flag = false;
+            if(General_Menu.activeSelf){
+                MenuControl.GetComponent<AudioSource>().Play();
+                General_Menu.SetActive(false);
+            }else{
+                MenuControl.GetComponent<AudioSource>().Play();
+                General_Menu.SetActive(true);
+            }
         }
         
     }
