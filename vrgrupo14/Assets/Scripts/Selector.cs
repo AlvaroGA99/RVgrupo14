@@ -11,7 +11,7 @@ public class Selector : MonoBehaviour
     [SerializeField]private GameObject Movement;
     [SerializeField]private GameObject Room;
     [SerializeField]private GameObject MenuControl;
-    [SerializeField]private GameObject General_Menu;
+    [SerializeField]private GameObject Canvas_Menu;
 
     [SerializeField] int contador = 1; //interfaz general
 
@@ -66,7 +66,7 @@ public class Selector : MonoBehaviour
         }
         //Debug.Log("Countdown Complete!");
         Selection_Flag = true;
-    } 
+    }
 
     private void Awake()
     {
@@ -96,7 +96,7 @@ public class Selector : MonoBehaviour
     }
 
     public void ScaleNegative(int axis){
-        scaleValue = Mathf.Abs(scaleValue);        
+        scaleValue = -Mathf.Abs(scaleValue);        
         ScaleRoom(axis);
     }
     public void ScaleRoom(int axis){        
@@ -108,7 +108,58 @@ public class Selector : MonoBehaviour
     {
         flag_scale = false;
     }
+//Control del menu
 
+    public GameObject General_M;
+    public GameObject Escalas_M;
+    public GameObject Presets_M;
+    public GameObject Config_M;
+    public void Escalas_In(){
+        StartCoroutine("Escalas", 1);
+    }
+    public void Escalas_Out(){
+        StopCoroutine("Escalas");
+    }
+    private IEnumerator Escalas(int time){
+        yield return new WaitForSeconds(time);
+
+        General_M.SetActive(false);
+        Escalas_M.active = !Escalas_M.active;
+
+    }
+    public void Presets_In(){
+        StartCoroutine("Presets", 1);
+    }
+    public void Presets_Out(){
+        StopCoroutine("Presets");
+    }
+    private IEnumerator Presets(int time){
+        yield return new WaitForSeconds(time);
+
+        General_M.SetActive(false);
+        Presets_M.active = !Presets_M.active;
+
+    }
+    public void Config_In(){
+        StartCoroutine("Config", 1);
+    }
+    public void Config_Out(){
+        StopCoroutine("Config");
+    }
+    private IEnumerator Config(int time){
+        yield return new WaitForSeconds(time);
+
+        General_M.SetActive(false);
+        Config_M.active = !Config_M.active;
+
+    }
+
+    public void closeAll(){
+        Escalas_M.SetActive(false);
+        Presets_M.SetActive(false);
+        Config_M.SetActive(false);
+        General_M.SetActive(true);
+    }
 //movimiento del jugador
     public void movement_W()
     {
@@ -211,18 +262,23 @@ public class Selector : MonoBehaviour
             SceneManager.LoadScene("Orquestal");
 
         }
-
+        if(!Canvas_Menu.activeSelf){
+            Canvas_Menu.transform.SetParent(this.gameObject.transform);
+        }else{
+            Canvas_Menu.transform.SetParent(Movement.transform);
+        }
         if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){            
             Selection_Flag = false;
-            if(General_Menu.activeSelf){
+            if(Canvas_Menu.activeSelf){
                 MenuControl.GetComponent<AudioSource>().Play();
-                General_Menu.SetActive(false);
+                closeAll();
+                Canvas_Menu.SetActive(false);
             }else{
                 MenuControl.GetComponent<AudioSource>().Play();
-                General_Menu.SetActive(true);
+                closeAll();
+                Canvas_Menu.SetActive(true);
             }
         }
         
     }
-
 }

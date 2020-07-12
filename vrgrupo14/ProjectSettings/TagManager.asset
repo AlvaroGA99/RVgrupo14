@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - sonidos
+  - General_M
   layers:
   - Default
   - TransparentFX
