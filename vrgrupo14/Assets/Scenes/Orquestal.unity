@@ -516,6 +516,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8927883954121250858, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8927883954123152074, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -528,6 +533,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c59a093268afc7f41818bb2ddadd421f, type: 3}
+--- !u!1 &188489834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2967240737708159562, guid: c59a093268afc7f41818bb2ddadd421f,
+    type: 3}
+  m_PrefabInstance: {fileID: 188489833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &193022054
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movement: {fileID: 0}
   Room: {fileID: 0}
+  ResonanceRoom: {fileID: 0}
   MenuControl: {fileID: 0}
   Canvas_Menu: {fileID: 0}
   contador: 3
@@ -2815,6 +2827,11 @@ PrefabInstance:
       propertyPath: Canvas_Menu
       value: 
       objectReference: {fileID: 1681831370}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: ResonanceRoom
+      value: 
+      objectReference: {fileID: 188489834}
     - target: {fileID: 8820615201882105353, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: m_LocalPosition.x

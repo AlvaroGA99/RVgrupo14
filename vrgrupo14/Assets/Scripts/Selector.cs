@@ -10,6 +10,7 @@ public class Selector : MonoBehaviour
 {
     [SerializeField]private GameObject Movement;
     [SerializeField]private GameObject Room;
+    [SerializeField]private GameObject ResonanceRoom;
     [SerializeField]private GameObject MenuControl;
     [SerializeField]private GameObject Canvas_Menu;
 
@@ -36,6 +37,7 @@ public class Selector : MonoBehaviour
     public bool movS = false;
     public bool movA = false;
 
+    Preset[] roomPresets = new Preset[6];
     Scene scene;
 
     //salas de musica
@@ -82,6 +84,7 @@ public class Selector : MonoBehaviour
     private void Start()
     {
         Selection_Flag = false; flag_remove = false;
+        storePresets();
         scene = SceneManager.GetActiveScene();
         sincronizar();
         flag_ambiente = true;
@@ -124,7 +127,7 @@ public class Selector : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         General_M.SetActive(false);
-        Escalas_M.active = !Escalas_M.active;
+        Escalas_M.SetActive(!Escalas_M.activeSelf);
 
     }
     public void Presets_In(){
@@ -137,7 +140,7 @@ public class Selector : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         General_M.SetActive(false);
-        Presets_M.active = !Presets_M.active;
+        Presets_M.SetActive(!Presets_M.activeSelf);
 
     }
     public void Config_In(){
@@ -150,7 +153,7 @@ public class Selector : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         General_M.SetActive(false);
-        Config_M.active = !Config_M.active;
+        Config_M.SetActive(!Config_M.activeSelf);
 
     }
 
@@ -181,8 +184,44 @@ public class Selector : MonoBehaviour
     {
         movA = false; movS = false; movD = false; movW = false;
     }
+    //presets
+    public void setPreset(int index){
+        roomPresets[index].setPreset(ResonanceRoom);
+    }
 
+    public void storePresets(){
+        float[] auxRevProperties;
+        
+        roomPresets[0] = new Preset("Default");
+        auxRevProperties = new float[] {22,22,14,9,22,22,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[0].setSize(1f,1f,1f);
+        roomPresets[0].setMaterials(auxRevProperties);
+        
+        roomPresets[1] = new Preset("Sala de cine");
+        auxRevProperties = new float[] {19,19,10,0,7,6,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[1].setSize(3f,1.5f,1.7f);
+        roomPresets[1].setMaterials(auxRevProperties);
 
+        roomPresets[2] = new Preset("Salón");
+        auxRevProperties = new float[] {9,15,11,15,6,5,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[2].setSize(2f,2f,2f);
+        roomPresets[2].setMaterials(auxRevProperties);
+        
+        roomPresets[3] = new Preset("Catedral");
+        auxRevProperties = new float[] {9,9,12,12,12,9,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[3].setSize(6f,13f,6f);
+        roomPresets[3].setMaterials(auxRevProperties);
+        
+        roomPresets[4] = new Preset("Bunker");
+        auxRevProperties = new float[] {13,13,4,4,13,13,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[4].setSize(1.2f,0.5f,2f);
+        roomPresets[4].setMaterials(auxRevProperties);
+        
+        roomPresets[5] = new Preset("Baño");
+        auxRevProperties = new float[] {1,1,20,15,1,1,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[5].setSize(0.5f,1f,0.7f);
+        roomPresets[5].setMaterials(auxRevProperties);       
+    }
     public void FixedUpdate()
     {
         if(flag_scale){

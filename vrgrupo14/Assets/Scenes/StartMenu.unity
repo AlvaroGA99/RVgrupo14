@@ -1287,32 +1287,32 @@ PrefabInstance:
     - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: leftWall
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: rightWall
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: floor
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: ceiling
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: backWall
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: frontWall
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2967240737708159560, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}

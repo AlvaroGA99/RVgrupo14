@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7929fa5e730414cb1f18134aef71c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftWall: 4
-  rightWall: 4
+  leftWall: 22
+  rightWall: 22
   floor: 14
-  ceiling: 15
-  backWall: 4
-  frontWall: 4
+  ceiling: 9
+  backWall: 22
+  frontWall: 22
   reflectivity: 1.11
   reverbGainDb: -0.3
   reverbBrightness: 0.09
