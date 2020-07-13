@@ -30,6 +30,6 @@ public class Preset : MonoBehaviour
         obj.GetComponent<ResonanceAudioRoom>().reverbGainDb = reverbProperties[7];
         obj.GetComponent<ResonanceAudioRoom>().reverbBrightness = reverbProperties[8];
         obj.GetComponent<ResonanceAudioRoom>().reverbTime = reverbProperties[9];
-        obj.GetComponentInParent<Transform>().localScale = size;
+        obj.GetComponentInParent<Transform>().parent.localScale = size;
     }
 }

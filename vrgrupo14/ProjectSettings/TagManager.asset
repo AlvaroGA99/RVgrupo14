@@ -6,6 +6,7 @@ TagManager:
   tags:
   - sonidos
   - General_M
+  - Luz
   layers:
   - Default
   - TransparentFX

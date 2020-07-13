@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using GoogleVR.HelloVR;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
@@ -87,6 +88,10 @@ public class Selector : MonoBehaviour
         storePresets();
         scene = SceneManager.GetActiveScene();
         sincronizar();
+        
+        if(SceneManager.GetActiveScene().name != "StartMenu")
+        GetRoomInfo();
+
         flag_ambiente = true;
         contador = 1;
         tempo_control = 0;
@@ -138,7 +143,7 @@ public class Selector : MonoBehaviour
     }
     private IEnumerator Presets(int time){
         yield return new WaitForSeconds(time);
-
+        GetRoomInfo();
         General_M.SetActive(false);
         Presets_M.SetActive(!Presets_M.activeSelf);
 
@@ -189,6 +194,35 @@ public class Selector : MonoBehaviour
         roomPresets[index].setPreset(ResonanceRoom);
     }
 
+    
+    public GameObject presetName;
+    public GameObject roomInfo;
+    public void setP_In(int index){
+        StartCoroutine(PressetSettings(1,index));
+    }
+    public void setP_Out(){
+        StopAllCoroutines();
+    }
+    public void GetRoomInfo(){ //magia amigos, magia
+            roomInfo.GetComponent<TextMeshProUGUI>().text = 
+            Room.GetComponent<Transform>().localScale+"\n"+
+            "Frente: "+ResonanceRoom.GetComponent<ResonanceAudioRoom>().frontWall+"\n"+
+            "Atrás: "+ResonanceRoom.GetComponent<ResonanceAudioRoom>().backWall+"\n"+
+            "Izquierda: "+ResonanceRoom.GetComponent<ResonanceAudioRoom>().leftWall+"\n"+
+            "Derecha: "+ResonanceRoom.GetComponent<ResonanceAudioRoom>().rightWall+"\n"+
+            "Techo: "+ResonanceRoom.GetComponent<ResonanceAudioRoom>().ceiling+"\n"+
+            "Suelo: "+ResonanceRoom.GetComponent<ResonanceAudioRoom>().floor+"\n";
+    }
+    
+    private IEnumerator PressetSettings(int time, int index){
+        yield return new WaitForSeconds(time);
+        
+            setPreset(index);
+            presetName.GetComponent<TextMeshProUGUI>().text = roomPresets[index].presetName;
+
+            GetRoomInfo();
+
+    }
     public void storePresets(){
         float[] auxRevProperties;
         
@@ -198,29 +232,30 @@ public class Selector : MonoBehaviour
         roomPresets[0].setMaterials(auxRevProperties);
         
         roomPresets[1] = new Preset("Sala de cine");
-        auxRevProperties = new float[] {19,19,10,0,7,6,1.11f,-0.03f,0.09f,1.23f};
+        auxRevProperties = new float[] {19,19,10,0,6,7,1.11f,-0.03f,0.09f,1.23f};
         roomPresets[1].setSize(3f,1.5f,1.7f);
         roomPresets[1].setMaterials(auxRevProperties);
 
-        roomPresets[2] = new Preset("Salón");
-        auxRevProperties = new float[] {9,15,11,15,6,5,1.11f,-0.03f,0.09f,1.23f};
-        roomPresets[2].setSize(2f,2f,2f);
+        roomPresets[2] = new Preset("Baño");
+        auxRevProperties = new float[] {1,1,20,15,1,1,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[2].setSize(0.5f,1f,0.7f);
         roomPresets[2].setMaterials(auxRevProperties);
         
-        roomPresets[3] = new Preset("Catedral");
-        auxRevProperties = new float[] {9,9,12,12,12,9,1.11f,-0.03f,0.09f,1.23f};
-        roomPresets[3].setSize(6f,13f,6f);
-        roomPresets[3].setMaterials(auxRevProperties);
-        
-        roomPresets[4] = new Preset("Bunker");
+        roomPresets[3] = new Preset("Bunker");
         auxRevProperties = new float[] {13,13,4,4,13,13,1.11f,-0.03f,0.09f,1.23f};
-        roomPresets[4].setSize(1.2f,0.5f,2f);
+        roomPresets[3].setSize(1.2f,0.5f,2f);
+        roomPresets[3].setMaterials(auxRevProperties);
+
+        roomPresets[4] = new Preset("Salón");
+        auxRevProperties = new float[] {9,15,11,15,5,6,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[4].setSize(2f,2f,2f);
         roomPresets[4].setMaterials(auxRevProperties);
+
+        roomPresets[5] = new Preset("Catedral");
+        auxRevProperties = new float[] {9,9,12,12,9,12,1.11f,-0.03f,0.09f,1.23f};
+        roomPresets[5].setSize(6f,13f,6f);
+        roomPresets[5].setMaterials(auxRevProperties);
         
-        roomPresets[5] = new Preset("Baño");
-        auxRevProperties = new float[] {1,1,20,15,1,1,1.11f,-0.03f,0.09f,1.23f};
-        roomPresets[5].setSize(0.5f,1f,0.7f);
-        roomPresets[5].setMaterials(auxRevProperties);       
     }
     public void FixedUpdate()
     {
@@ -306,7 +341,7 @@ public class Selector : MonoBehaviour
         }else{
             Canvas_Menu.transform.SetParent(Movement.transform);
         }
-        if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){            
+        if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){         
             Selection_Flag = false;
             if(Canvas_Menu.activeSelf){
                 MenuControl.GetComponent<AudioSource>().Play();

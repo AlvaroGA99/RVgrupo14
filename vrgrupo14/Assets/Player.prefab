@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8820615200873862107}
   - component: {fileID: 8820615200873862108}
   - component: {fileID: 1233746931}
+  - component: {fileID: 254176527}
+  - component: {fileID: 254176528}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -98,14 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113e4aa2cd3db44d1ac0cb7e9794964b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalGainDb: 0
+  globalGainDb: -2
   occlusionMask:
     serializedVersion: 2
     m_Bits: 4294967295
   stereoSpeakerModeEnabled: 0
   recorderSeamless: 0
   recorderSourceTag: Untagged
-  recorderFoldout: 0
+  recorderFoldout: 1
 --- !u!114 &8820615200873862108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,9 +139,55 @@ MonoBehaviour:
   m_Device: 0
   m_PoseSource: 6
   m_PoseProviderComponent: {fileID: 0}
-  m_TrackingType: 0
+  m_TrackingType: 1
   m_UpdateType: 1
   m_UseRelativeTransform: 1
+--- !u!114 &254176527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820615200873862110}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb924e4d29aa2a647a4eec36ae8a00fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Movement: {fileID: 0}
+  Room: {fileID: 0}
+  ResonanceRoom: {fileID: 0}
+  MenuControl: {fileID: 0}
+  Canvas_Menu: {fileID: 0}
+  contador: 3
+  velocity: 60
+  scaleValue: 0.5
+  movW: 0
+  movD: 0
+  movS: 0
+  movA: 0
+  Sala0: {fileID: 0}
+  Sala1: {fileID: 0}
+  Sala2: {fileID: 0}
+  General_M: {fileID: 0}
+  Escalas_M: {fileID: 0}
+  Presets_M: {fileID: 0}
+  Config_M: {fileID: 0}
+  presetName: {fileID: 0}
+  roomInfo: {fileID: 0}
+--- !u!114 &254176528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820615200873862110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c127e7c19b22545ad0778c358d5b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Surface: {fileID: 0}
 --- !u!1 &8820615201605477271
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8820615201605477268
 Transform:
   m_ObjectHideFlags: 0
@@ -184,7 +232,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8820615200873862110}
-  markers: []
+  markers:
+  - markerId: 0
+    markerPrefab: {fileID: 1833048384861988951, guid: 7e49ddaf686ddc04c9a414d218c54aac,
+      type: 3}
+  - markerId: 1
+    markerPrefab: {fileID: 7213647064572180891, guid: 600fe5803cbc8a1419cbd1d31d10e113,
+      type: 3}
+  - markerId: 2
+    markerPrefab: {fileID: 8947106694397583393, guid: 04fcdb500dc9ccd42b4edc1ff38e8390,
+      type: 3}
+  - markerId: 3
+    markerPrefab: {fileID: 4175051952266607259, guid: d27430a11c8406d419f00f1d7b3fab1b,
+      type: 3}
+  - markerId: 4
+    markerPrefab: {fileID: 2964672007283073008, guid: c363ea7a9b52bf041acda58940dde962,
+      type: 3}
+  - markerId: 5
+    markerPrefab: {fileID: 7850653971382618344, guid: c2c5ee4b77db1b147b29ef9e74c15b19,
+      type: 3}
+  - markerId: 6
+    markerPrefab: {fileID: 827408309142028557, guid: 4c1ebfc8eecf74c45a17ca32719df668,
+      type: 3}
 --- !u!1 &8820615201882105354
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,8 +265,8 @@ GameObject:
   - component: {fileID: 8820615201882105353}
   - component: {fileID: 8820615201882105365}
   - component: {fileID: 8820615201882105366}
-  - component: {fileID: 8820615201882105367}
   - component: {fileID: 8820615201882105352}
+  - component: {fileID: 1187858642}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -266,19 +335,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8820615201882105367
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8820615201882105354}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8820615201882105352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,8 +347,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb924e4d29aa2a647a4eec36ae8a00fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Movement: {fileID: 0}
+  Room: {fileID: 0}
+  ResonanceRoom: {fileID: 0}
+  MenuControl: {fileID: 0}
+  Canvas_Menu: {fileID: 0}
   contador: 3
-  ambiental: {fileID: 0}
+  velocity: 30
+  scaleValue: 0.01
+  movW: 0
+  movD: 0
+  movS: 0
+  movA: 0
+  Sala0: {fileID: 0}
+  Sala1: {fileID: 0}
+  Sala2: {fileID: 0}
+  General_M: {fileID: 0}
+  Escalas_M: {fileID: 0}
+  Presets_M: {fileID: 0}
+  Config_M: {fileID: 0}
+  presetName: {fileID: 0}
+  roomInfo: {fileID: 0}
+--- !u!54 &1187858642
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8820615201882105354}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &8820615202131782727
 PrefabInstance:
   m_ObjectHideFlags: 0

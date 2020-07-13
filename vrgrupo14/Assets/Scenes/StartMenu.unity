@@ -353,6 +353,21 @@ PrefabInstance:
       propertyPath: Config_M
       value: 
       objectReference: {fileID: 1586194363}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: ResonanceRoom
+      value: 
+      objectReference: {fileID: 1586194363}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: presetName
+      value: 
+      objectReference: {fileID: 1586194363}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: roomInfo
+      value: 
+      objectReference: {fileID: 1586194363}
     - target: {fileID: 8820615201882105353, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -805,8 +820,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 6.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 8927883956128461956}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &643914003
 GameObject:
@@ -898,7 +913,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.15, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -270, y: 180, z: 0}
 --- !u!1 &1004377793
 GameObject:
@@ -1115,7 +1130,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630503996 stripped
 GameObject:
@@ -1329,6 +1344,16 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2967240738019862293, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: m_Range
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967240738019862295, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Luz
+      objectReference: {fileID: 0}
     - target: {fileID: 8927883954120885258, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: m_Name
@@ -1391,3 +1416,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c59a093268afc7f41818bb2ddadd421f, type: 3}
+--- !u!4 &8927883956128461956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8927883954121250858, guid: c59a093268afc7f41818bb2ddadd421f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8927883956128461955}
+  m_PrefabAsset: {fileID: 0}
