@@ -7,6 +7,7 @@ TagManager:
   - sonidos
   - General_M
   - Luz
+  - sonidospadre
   layers:
   - Default
   - TransparentFX

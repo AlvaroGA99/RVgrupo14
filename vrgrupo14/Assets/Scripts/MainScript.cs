@@ -49,7 +49,6 @@ namespace PaperPlaneTools.AR {
 			foreach (MarkerObject markerObject in markers) {
 				gameObjects.Add(markerObject.markerId, new List<MarkerOnScene>());
 			}
-
 		}
 
 
@@ -112,7 +111,7 @@ namespace PaperPlaneTools.AR {
 				markerOnScene.bestMatchIndex = -1;
                 if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
                 {
-                    markerOnScene.gameObject.transform.parent = null;
+                    markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
 
                     if (Selector.flag_remove)
                     {

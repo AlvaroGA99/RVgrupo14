@@ -14,11 +14,15 @@ public class Selector : MonoBehaviour
     [SerializeField]private GameObject ResonanceRoom;
     [SerializeField]private GameObject MenuControl;
     [SerializeField]private GameObject Canvas_Menu;
+    [SerializeField]private GameObject MenuPivot;
+    [SerializeField]private GameObject PlayerCamera;
 
     [SerializeField] int contador = 1; //interfaz general
 
     [SerializeField] float velocity = 15f;
     [SerializeField] float scaleValue = 0.5f;
+    public GameObject presetName;
+    public GameObject roomInfo;
     Vector3 scaleVec;
     int scaleAxis;
     bool passScale;
@@ -193,10 +197,6 @@ public class Selector : MonoBehaviour
     public void setPreset(int index){
         roomPresets[index].setPreset(ResonanceRoom);
     }
-
-    
-    public GameObject presetName;
-    public GameObject roomInfo;
     public void setP_In(int index){
         StartCoroutine(PressetSettings(1,index));
     }
@@ -336,10 +336,8 @@ public class Selector : MonoBehaviour
             SceneManager.LoadScene("Orquestal");
 
         }
-        if(!Canvas_Menu.activeSelf){
-            Canvas_Menu.transform.SetParent(this.gameObject.transform);
-        }else{
-            Canvas_Menu.transform.SetParent(Movement.transform);
+        if(Canvas_Menu.activeSelf){
+            MenuPivot.GetComponent<Transform>().rotation = new Quaternion(0f, PlayerCamera.GetComponent<Transform>().rotation.y, 0f, PlayerCamera.GetComponent<Transform>().rotation.w);
         }
         if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){         
             Selection_Flag = false;

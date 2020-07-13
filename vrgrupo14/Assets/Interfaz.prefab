@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3133602437047654636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8701776110554241146}
+  m_Layer: 0
+  m_Name: MenuPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8701776110554241146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3133602437047654636}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_Children:
+  - {fileID: 5589683024681644507}
+  m_Father: {fileID: 5589683023081112118}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5589683022742790338
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +916,7 @@ Transform:
   m_Children:
   - {fileID: 5589683023909823377}
   - {fileID: 8012658504123628602}
-  - {fileID: 5589683024681644507}
+  - {fileID: 8701776110554241146}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4658,7 +4689,7 @@ GameObject:
   - component: {fileID: 5589683024681644509}
   - component: {fileID: 5589683024681644508}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas_Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4672,19 +4703,19 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5589683024681644506}
   m_LocalRotation: {x: -0.14101018, y: -0, z: -0, w: 0.9900082}
-  m_LocalPosition: {x: 0, y: 0, z: 0.61}
-  m_LocalScale: {x: 0.001518511, y: 0.0007592555, z: 0.001518511}
+  m_LocalPosition: {x: 0, y: 0, z: 0.305}
+  m_LocalScale: {x: 0.0007592555, y: 0.0007296621, z: 0.0008184425}
   m_Children:
   - {fileID: 5589683024644661064}
   - {fileID: 5589683024319188917}
   - {fileID: 5589683024073400376}
   - {fileID: 5589683023409471460}
-  m_Father: {fileID: 5589683023081112118}
-  m_RootOrder: 2
+  m_Father: {fileID: 8701776110554241146}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -16.213001, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.02, y: -0.29}
+  m_AnchoredPosition: {x: 0.01, y: 0.16000006}
   m_SizeDelta: {x: 682, y: 538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5589683024681644510
