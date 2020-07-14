@@ -384,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905438078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9327191, y: 1.434479, z: -1.3333622}
+  m_LocalPosition: {x: 3, y: 3, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -596,6 +596,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1187858642, guid: 86cb3f930ec2b414bb6678f7fd3143e8, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: markers.Array.size
@@ -628,7 +632,7 @@ PrefabInstance:
         type: 3}
       propertyPath: markers.Array.data[3].markerPrefab
       value: 
-      objectReference: {fileID: 4175051952266607259, guid: 4eb506924bba005479effdaa0171f4dc,
+      objectReference: {fileID: 9116513543766460214, guid: 2bde1c686eaf94744b2f9c39b9821577,
         type: 3}
     - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}

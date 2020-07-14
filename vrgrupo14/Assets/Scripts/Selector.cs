@@ -336,9 +336,6 @@ public class Selector : MonoBehaviour
             SceneManager.LoadScene("Orquestal");
 
         }
-        if(Canvas_Menu.activeSelf){
-            MenuPivot.GetComponent<Transform>().rotation = new Quaternion(0f, PlayerCamera.GetComponent<Transform>().rotation.y, 0f, PlayerCamera.GetComponent<Transform>().rotation.w);
-        }
         if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){         
             Selection_Flag = false;
             if(Canvas_Menu.activeSelf){
@@ -349,6 +346,7 @@ public class Selector : MonoBehaviour
                 MenuControl.GetComponent<AudioSource>().Play();
                 closeAll();
                 Canvas_Menu.SetActive(true);
+                MenuPivot.GetComponent<Transform>().rotation = new Quaternion(0f, PlayerCamera.GetComponent<Transform>().rotation.y, 0f, PlayerCamera.GetComponent<Transform>().rotation.w);
             }
         }
         

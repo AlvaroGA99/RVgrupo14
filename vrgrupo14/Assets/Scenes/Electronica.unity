@@ -112,6 +112,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &4582009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4582010}
+  m_Layer: 0
+  m_Name: PadreSonidos
+  m_TagString: sonidospadre
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4582010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4582009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &107358545
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +225,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &303268841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3133602437047654636, guid: 89649b564d64d5a41805f1eabfe5dc0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 565820454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &565820454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,6 +238,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3133602437047654636, guid: 89649b564d64d5a41805f1eabfe5dc0f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5589683022742790341, guid: 89649b564d64d5a41805f1eabfe5dc0f,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -567,6 +608,11 @@ PrefabInstance:
       propertyPath: m_Range
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2967240738019862295, guid: c59a093268afc7f41818bb2ddadd421f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8927883954120885258, guid: c59a093268afc7f41818bb2ddadd421f,
         type: 3}
       propertyPath: m_Name
@@ -739,6 +785,16 @@ PrefabInstance:
       propertyPath: roomInfo
       value: 
       objectReference: {fileID: 565820457}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: PlayerCamera
+      value: 
+      objectReference: {fileID: 1864833248}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: MenuPivot
+      value: 
+      objectReference: {fileID: 303268841}
     - target: {fileID: 8820615201882105353, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1201,6 +1257,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1864833248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8820615200873862110, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1231324327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1936116396
 PrefabInstance:
   m_ObjectHideFlags: 0
