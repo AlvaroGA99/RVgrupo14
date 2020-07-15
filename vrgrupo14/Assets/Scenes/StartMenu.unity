@@ -368,6 +368,16 @@ PrefabInstance:
       propertyPath: roomInfo
       value: 
       objectReference: {fileID: 1586194363}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: Pivote
+      value: 
+      objectReference: {fileID: 1586194363}
+    - target: {fileID: 8820615201882105352, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+        type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 1097465633}
     - target: {fileID: 8820615201882105353, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1102,6 +1112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb924e4d29aa2a647a4eec36ae8a00fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1097465633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8820615200873862110, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 429211116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1586194363
 GameObject:
   m_ObjectHideFlags: 0

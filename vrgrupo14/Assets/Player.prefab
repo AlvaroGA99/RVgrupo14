@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8820615200873862107}
   - component: {fileID: 8820615200873862108}
   - component: {fileID: 1233746931}
-  - component: {fileID: 254176527}
   - component: {fileID: 254176528}
   m_Layer: 0
   m_Name: Main Camera
@@ -142,39 +141,6 @@ MonoBehaviour:
   m_TrackingType: 1
   m_UpdateType: 1
   m_UseRelativeTransform: 1
---- !u!114 &254176527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8820615200873862110}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb924e4d29aa2a647a4eec36ae8a00fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Movement: {fileID: 0}
-  Room: {fileID: 0}
-  ResonanceRoom: {fileID: 0}
-  MenuControl: {fileID: 0}
-  Canvas_Menu: {fileID: 0}
-  contador: 3
-  velocity: 60
-  scaleValue: 0.5
-  movW: 0
-  movD: 0
-  movS: 0
-  movA: 0
-  Sala0: {fileID: 0}
-  Sala1: {fileID: 0}
-  Sala2: {fileID: 0}
-  General_M: {fileID: 0}
-  Escalas_M: {fileID: 0}
-  Presets_M: {fileID: 0}
-  Config_M: {fileID: 0}
-  presetName: {fileID: 0}
-  roomInfo: {fileID: 0}
 --- !u!114 &254176528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +318,8 @@ MonoBehaviour:
   ResonanceRoom: {fileID: 0}
   MenuControl: {fileID: 0}
   Canvas_Menu: {fileID: 0}
+  Pivote: {fileID: 0}
+  camara: {fileID: 0}
   contador: 3
   velocity: 30
   scaleValue: 0.01
@@ -382,7 +350,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1001 &8820615202131782727
 PrefabInstance:

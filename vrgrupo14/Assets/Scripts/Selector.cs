@@ -14,6 +14,8 @@ public class Selector : MonoBehaviour
     [SerializeField]private GameObject ResonanceRoom;
     [SerializeField]private GameObject MenuControl;
     [SerializeField]private GameObject Canvas_Menu;
+    [SerializeField]private GameObject Pivote;
+    [SerializeField]public GameObject camara;
 
     [SerializeField] int contador = 1; //interfaz general
 
@@ -28,7 +30,6 @@ public class Selector : MonoBehaviour
     //flags de interfaz y control
     public static bool Selection_Flag = false;
     public static bool flag_scale = false;
-    public static bool flag_remove = false;
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
 
@@ -84,7 +85,7 @@ public class Selector : MonoBehaviour
 
     private void Start()
     {
-        Selection_Flag = false; flag_remove = false;
+        Selection_Flag = false;
         storePresets();
         scene = SceneManager.GetActiveScene();
         sincronizar();
@@ -337,9 +338,7 @@ public class Selector : MonoBehaviour
 
         }
         if(!Canvas_Menu.activeSelf){
-            Canvas_Menu.transform.SetParent(this.gameObject.transform);
-        }else{
-            Canvas_Menu.transform.SetParent(Movement.transform);
+            Pivote.GetComponent<Transform>().rotation = new Quaternion(0,camara.GetComponent<Transform>().rotation.y,0,camara.GetComponent<Transform>().rotation.w);
         }
         if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){         
             Selection_Flag = false;

@@ -113,19 +113,6 @@ namespace PaperPlaneTools.AR {
                 {
                     markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
 
-                    if (Selector.flag_remove)
-                    {
-                        
-                        //Modificaciones nuestras
-                        //Destroy(markerOnScene.gameObject);
-                        //gameObjects.Clear();
-                        Destroy(GameObject.FindGameObjectWithTag("sonidos"));
-                        Selector.flag_remove = false;
-                        //Selector.flag_ambiente = true;
-                        
-                        SceneManager.LoadScene("GameScene");
-                       
-                    }
                 }
                 else
                 {

@@ -13,12 +13,14 @@ public class AudioControl : MonoBehaviour
     bool value = true;
     public bool changeVolume = false;
     int direction;
-    int instruction;    
+    int instruction;
+    Selector playerReference;
     private IEnumerator countdown(int s){
         yield return new WaitForSeconds(s);
         switch(instruction){
             case 0:
                 menu.SetActive(!menu.activeSelf);
+                menu.GetComponent<Transform>().rotation = new Quaternion(playerReference.camara.GetComponent<Transform>().rotation.x,playerReference.camara.GetComponent<Transform>().rotation.y,playerReference.camara.GetComponent<Transform>().rotation.z,playerReference.camara.GetComponent<Transform>().rotation.w);
                 break;
             case 1:
                 this.gameObject.GetComponent<AudioSource>().mute = !this.gameObject.GetComponent<AudioSource>().mute;
@@ -36,7 +38,8 @@ public class AudioControl : MonoBehaviour
     }
     void Start()
     {
-        GameObject padre = GameObject.FindGameObjectWithTag("sonidospadre");        
+        padre = GameObject.FindGameObjectWithTag("sonidospadre");
+        menu.SetActive(false);
         Selector.flag_ambiente = true;
         this.gameObject.GetComponent<AudioSource>().enabled = false;
         value = true;
@@ -44,10 +47,6 @@ public class AudioControl : MonoBehaviour
     }
     void FixedUpdate()
     {
-
-        #if PLATFORM_ANDROID
-        //menu.SetActive(menu.GetComponent<ObjectController>().IsGazed);
-        #endif
 
         if (Selector.tempo_control <= 0) {
             //como sincronizar las canciones en fase: mago.mago.mago(mago);            
