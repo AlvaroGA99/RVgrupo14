@@ -50,7 +50,8 @@
 			var ri = GetComponent<UnityEngine.UI.RawImage>();
 
 			Vector2 output = new Vector2();
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(ri.rectTransform, coord, null, out output);
+
+//RectTransformUtility.ScreenPointToLocalPointInRectangle(ri.rectTransform, coord, null, out output);
 
 			// pivot is in the center of the rectTransform, we need { 0, 0 } origin
 			output.x += size.Width / 2;

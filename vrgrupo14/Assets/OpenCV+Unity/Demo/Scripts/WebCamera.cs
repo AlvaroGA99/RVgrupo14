@@ -17,7 +17,7 @@ namespace OpenCvSharp.Demo
 		/// <summary>
 		/// Target surface to render WebCam stream
 		/// </summary>
-		public GameObject Surface;
+//		public GameObject Surface;
 
 		private Nullable<WebCamDevice> webCamDevice = null;
 		private WebCamTexture webCamTexture = null;
@@ -166,10 +166,10 @@ namespace OpenCvSharp.Demo
 			if (renderedTexture != null)
 			{
 				// apply
-				Surface.GetComponent<RawImage>().texture = renderedTexture;
+//				Surface.GetComponent<RawImage>().texture = renderedTexture;
 
 				// Adjust image ration according to the texture sizes 
-				Surface.GetComponent<RectTransform>().sizeDelta = new Vector2(renderedTexture.width, renderedTexture.height);
+//				Surface.GetComponent<RectTransform>().sizeDelta = new Vector2(renderedTexture.width, renderedTexture.height);
 			}
 		}
 	}
