@@ -14,13 +14,13 @@ public class AudioControl : MonoBehaviour
     public bool changeVolume = false;
     int direction;
     int instruction;
-    Selector playerReference;
+    GameObject playerReference;
     private IEnumerator countdown(int s){
         yield return new WaitForSeconds(s);
         switch(instruction){
             case 0:
                 menu.SetActive(!menu.activeSelf);
-                menu.GetComponent<Transform>().rotation = new Quaternion(playerReference.camara.GetComponent<Transform>().rotation.x,playerReference.camara.GetComponent<Transform>().rotation.y,playerReference.camara.GetComponent<Transform>().rotation.z,playerReference.camara.GetComponent<Transform>().rotation.w);
+                menu.GetComponent<Transform>().rotation = new Quaternion(playerReference.GetComponent<Transform>().rotation.x,playerReference.GetComponent<Transform>().rotation.y,playerReference.GetComponent<Transform>().rotation.z,playerReference.GetComponent<Transform>().rotation.w);
                 break;
             case 1:
                 this.gameObject.GetComponent<AudioSource>().mute = !this.gameObject.GetComponent<AudioSource>().mute;
@@ -39,6 +39,7 @@ public class AudioControl : MonoBehaviour
     void Start()
     {
         padre = GameObject.FindGameObjectWithTag("sonidospadre");
+        playerReference = GameObject.FindGameObjectWithTag("MainCamera");
         menu.SetActive(false);
         Selector.flag_ambiente = true;
         this.gameObject.GetComponent<AudioSource>().enabled = false;

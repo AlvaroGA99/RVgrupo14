@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 3268344277482548731}
   - component: {fileID: 3631338028121306663}
   - component: {fileID: 6113995292596116166}
+  - component: {fileID: 3703076742526524030}
   m_Layer: 0
   m_Name: WoodWinds
   m_TagString: sonidos
@@ -689,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912fe52918538de438e62b10b63b5e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 0}
+  menu: {fileID: 7428062844114140256}
   changeVolume: 0
 --- !u!65 &7701383858765546000
 BoxCollider:
@@ -700,7 +701,7 @@ BoxCollider:
   m_GameObject: {fileID: 5825219737398898933}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -841,7 +842,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 3703076742526524030}
           m_MethodName: SetGazedAt
           m_Mode: 6
           m_Arguments:
@@ -867,7 +868,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 3703076742526524030}
           m_MethodName: SetGazedAt
           m_Mode: 6
           m_Arguments:
@@ -879,7 +880,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 4445752309223844487}
-          m_MethodName: HideMenu
+          m_MethodName: Intruction_OUT
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -890,6 +891,21 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   delegates: []
+--- !u!114 &3703076742526524030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825219737398898933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d9412aff759420192d8dcf33f969bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsGazed: 0
+  inactiveMaterial: {fileID: 0}
+  gazedAtMaterial: {fileID: 0}
 --- !u!1 &6270743591901110669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,7 +1128,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1191,7 +1207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8964169026805759085
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1200,7 +1216,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7428062844114140256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.4}
   m_LocalScale: {x: 0.006, y: 0.006, z: 0.006}
   m_Children:
   - {fileID: 1394828900575981678}

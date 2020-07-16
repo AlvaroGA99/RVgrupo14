@@ -610,19 +610,19 @@ PrefabInstance:
         type: 3}
       propertyPath: markers.Array.data[0].markerPrefab
       value: 
-      objectReference: {fileID: 1833048384861988951, guid: e55c98c8a3182ad4086303bea79f2575,
+      objectReference: {fileID: 9116513543766460214, guid: 50826a2c6746da74d8b7e9119c4885ed,
         type: 3}
     - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: markers.Array.data[1].markerPrefab
       value: 
-      objectReference: {fileID: 7213647064572180891, guid: 62a847f436a787046a5d1accaed52eb8,
+      objectReference: {fileID: 9116513543766460214, guid: c65cae218a8a870469cd479db8fde402,
         type: 3}
     - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: markers.Array.data[2].markerPrefab
       value: 
-      objectReference: {fileID: 8947106694397583393, guid: 04bb652c9f0de8244a94fd5d04156b79,
+      objectReference: {fileID: 9116513543766460214, guid: 8f309aaef786e0b4086ef316c2ba8eeb,
         type: 3}
     - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
@@ -634,13 +634,13 @@ PrefabInstance:
         type: 3}
       propertyPath: markers.Array.data[4].markerPrefab
       value: 
-      objectReference: {fileID: 2964672007283073008, guid: 8cabe043beec22643b5fd4e357132698,
+      objectReference: {fileID: 9116513543766460214, guid: 2144b61012ac0944fa5936b664539eaa,
         type: 3}
     - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
       propertyPath: markers.Array.data[5].markerPrefab
       value: 
-      objectReference: {fileID: 7850653971382618344, guid: ac3d06ebea884674abd2eff92dc5c953,
+      objectReference: {fileID: 9116513543766460214, guid: d47d3ce73eb450843823d6463c7272bc,
         type: 3}
     - target: {fileID: 8820615201605477269, guid: 86cb3f930ec2b414bb6678f7fd3143e8,
         type: 3}
