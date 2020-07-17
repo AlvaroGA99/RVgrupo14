@@ -25,13 +25,14 @@ public class Selector : MonoBehaviour
     int scaleAxis;
     bool passScale;
     public static double tempo = 9; //tempo de los sonidos para sincronizar
-    public static double tempo_control = tempo; 
+    public static double tempo_control = tempo;     
 
     //flags de interfaz y control
     public static bool Selection_Flag = false;
     public static bool flag_scale = false;
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
+    public static bool flag_scan = false;
 
     //movimiento
     public bool movW = false;
@@ -161,7 +162,7 @@ public class Selector : MonoBehaviour
         General_M.SetActive(false);
         Config_M.SetActive(!Config_M.activeSelf);
 
-    }
+    }    
 
     public void closeAll(){
         Escalas_M.SetActive(false);
