@@ -70,6 +70,13 @@ namespace PaperPlaneTools.AR {
 				//webCamDevice = WebCamTexture.devices [cameraIndex];
 			}
 		}
+
+		//Cambios nuestros: temporizador de salir al parar de escanear aruco		
+    	private IEnumerator Scan(int time){
+        	yield return new WaitForSeconds(time);
+        	Selector.flag_scan = false;
+    	}
+		//
         
         protected override bool ProcessTexture(WebCamTexture input, ref Texture2D output)
         {
@@ -112,10 +119,17 @@ namespace PaperPlaneTools.AR {
                 if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
                 {
                     markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
-
+					StartCoroutine("Scan", 2);
                 }
                 else
                 {
+					StopCoroutine("Scan");
+					Selector.flag_scan = true;
+					markerOnScene.gameObject.GetComponentInChildren<AudioControl>().menu.SetActive(false);
+					Component[] sonidos = GameObject.FindGameObjectWithTag("sonidospadre").GetComponentsInChildren<AudioControl>();
+					foreach (AudioControl s in sonidos){
+						s.menu.SetActive(false);
+					}
                     markerOnScene.gameObject.transform.parent = player.GetComponent<Transform>();
                 }
 				--index;

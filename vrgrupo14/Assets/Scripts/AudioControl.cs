@@ -7,7 +7,7 @@ using GoogleVR.HelloVR;
 public class AudioControl : MonoBehaviour
 {
     private GameObject padre;
-    [SerializeField]private GameObject menu;
+    [SerializeField]public GameObject menu;
     Component[] audioComponents;
     float volumeIncrement = 0.05f;
     bool value = true;
@@ -19,8 +19,10 @@ public class AudioControl : MonoBehaviour
         yield return new WaitForSeconds(s);
         switch(instruction){
             case 0:
-                menu.SetActive(!menu.activeSelf);
-                menu.GetComponent<Transform>().rotation = new Quaternion(playerReference.GetComponent<Transform>().rotation.x,playerReference.GetComponent<Transform>().rotation.y,playerReference.GetComponent<Transform>().rotation.z,playerReference.GetComponent<Transform>().rotation.w);
+                if (!Selector.flag_scan){
+                    menu.SetActive(!menu.activeSelf);
+                    menu.GetComponent<Transform>().rotation = new Quaternion(playerReference.GetComponent<Transform>().rotation.x,playerReference.GetComponent<Transform>().rotation.y,playerReference.GetComponent<Transform>().rotation.z,playerReference.GetComponent<Transform>().rotation.w);
+                }
                 break;
             case 1:
                 this.gameObject.GetComponent<AudioSource>().mute = !this.gameObject.GetComponent<AudioSource>().mute;
@@ -28,7 +30,7 @@ public class AudioControl : MonoBehaviour
             case 2:                
                 audioComponents = padre.GetComponentsInChildren<AudioSource>();
                 foreach (AudioSource audio in audioComponents){
-                    audio.mute=value;            
+                    audio.mute=value;                    
                 }
                 value = !value;
                 this.gameObject.GetComponent<AudioSource>().mute = false;
