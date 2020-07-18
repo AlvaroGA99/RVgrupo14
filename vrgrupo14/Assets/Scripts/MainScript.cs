@@ -109,29 +109,43 @@ namespace PaperPlaneTools.AR {
 		}
 
 		private void ProcessMarkesWithSameId(MarkerObject markerObject, List<MarkerOnScene> gameObjects, List<int> foundedMarkers) {
-			int index = 0;
-            
-            
+			int index = 0;                        
+			//modificación
+			if(Selector.flag_killAudio){
+				Debug.Log(gameObjects.Count);
+				Destroy(Selector.destroyAudio);								
+				foreach(MarkerOnScene marker in gameObjects){
+					if (marker.gameObject.Equals(Selector.destroyAudio)){
+						gameObjects.Remove(marker);
+					}
+				}
+				Selector.flag_killAudio = false;
+				Debug.Log(gameObjects.Count);
+			}
+
             index = gameObjects.Count - 1;
+
 			while (index >= 0) {
                 MarkerOnScene markerOnScene = gameObjects[index];
 				markerOnScene.bestMatchIndex = -1;
-                if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
-                {
-                    markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
-					StartCoroutine("Scan", 2);
-                }
-                else
-                {
-					StopCoroutine("Scan");
-					Selector.flag_scan = true;
-					markerOnScene.gameObject.GetComponentInChildren<AudioControl>().menu.SetActive(false);
-					Component[] sonidos = GameObject.FindGameObjectWithTag("sonidospadre").GetComponentsInChildren<AudioControl>();
-					foreach (AudioControl s in sonidos){
-						s.menu.SetActive(false);
+				if(!Selector.flag_killAudio){
+					if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
+					{
+						markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
+						StartCoroutine("Scan", 2);
 					}
-                    markerOnScene.gameObject.transform.parent = player.GetComponent<Transform>();
-                }
+					else
+					{
+						StopCoroutine("Scan");
+						Selector.flag_scan = true;
+						markerOnScene.gameObject.GetComponentInChildren<AudioControl>().menu.SetActive(false);
+						Component[] sonidos = GameObject.FindGameObjectWithTag("sonidospadre").GetComponentsInChildren<AudioControl>();
+						foreach (AudioControl s in sonidos){
+							s.menu.SetActive(false);
+						}
+						markerOnScene.gameObject.transform.parent = player.GetComponent<Transform>();
+					}
+				}
 				--index;
                 
 			}

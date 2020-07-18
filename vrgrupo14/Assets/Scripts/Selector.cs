@@ -24,7 +24,7 @@ public class Selector : MonoBehaviour
     Component[] audioComponents;
     [SerializeField] float velocity = 15f;    
     [SerializeField] float scaleValue = 0.5f;
-
+    public static GameObject destroyAudio;
     float audioPitch;
     int instruccion;
     Vector3 scaleVec;
@@ -45,6 +45,7 @@ public class Selector : MonoBehaviour
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
     public static bool flag_scan = false;
+    public static bool flag_killAudio = false;
     Color activo = Color.green;
     Color inactivo = Color.red;
 
@@ -356,6 +357,11 @@ public class Selector : MonoBehaviour
         roomPresets[5].setSize(6f,13f,6f);
         roomPresets[5].setMaterials(auxRevProperties);
         
+    }
+
+    public static void killAudio(GameObject audio){
+        destroyAudio = audio;
+        flag_killAudio = true;
     }
     public void FixedUpdate()
     {   

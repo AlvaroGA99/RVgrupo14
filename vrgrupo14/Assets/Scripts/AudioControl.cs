@@ -5,7 +5,7 @@ using GoogleVR.HelloVR;
 
 [ExecuteAlways]
 public class AudioControl : MonoBehaviour
-{
+{   
     private GameObject padre;
     [SerializeField]public GameObject menu;
     Component[] audioComponents;
@@ -76,8 +76,8 @@ public class AudioControl : MonoBehaviour
 
 
                 break;
-            case 3:
-                Destroy(transform.parent.gameObject);
+            case 3:                
+                Selector.killAudio(transform.parent.gameObject);
                 break;
             default: break;
         }
@@ -100,8 +100,8 @@ public class AudioControl : MonoBehaviour
             this.gameObject.GetComponent<AudioSource>().enabled = true;            
             Selector.flag_sound = false;
         }
-
-        if(audioComponents.Length == 0){Selector.flag_ambiente = true;}
+        
+        if(padre.transform.childCount == 0){Selector.flag_ambiente = true;}
 
         if(changeVolume){
             this.gameObject.GetComponent<ResonanceAudioSource>().gainDb += direction * volumeIncrement;
