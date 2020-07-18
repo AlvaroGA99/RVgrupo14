@@ -10,7 +10,7 @@ public class AudioControl : MonoBehaviour
     [SerializeField]public GameObject menu;
     Component[] audioComponents;
     float volumeIncrement = 0.05f;
-    bool value = true;
+    public bool value = false;
     public bool changeVolume = false;
     int direction;
     int instruction;
@@ -26,17 +26,58 @@ public class AudioControl : MonoBehaviour
                 break;
             case 1:
                 this.gameObject.GetComponent<AudioSource>().mute = !this.gameObject.GetComponent<AudioSource>().mute;
+                if(this.gameObject.GetComponent<AudioSource>().mute){
+                    transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Renderer>().material.color = Color.red;
+                }else{
+                    transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Renderer>().material.color = Color.white;
+                }
+                audioComponents = padre.GetComponentsInChildren<AudioControl>();
+                foreach (AudioControl audio in audioComponents){
+                    if (audio.value){                        
+                        audio.transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).GetComponentInChildren<Renderer>().material.color = Color.white;
+                    }
+                    audio.value = false;
+                }
                 break;
-            case 2:                
+            case 2:
+                value = !value;           
                 audioComponents = padre.GetComponentsInChildren<AudioSource>();
                 foreach (AudioSource audio in audioComponents){
-                    audio.mute=value;                    
+                    audio.mute = value;
+                    if(value){
+                        audio.transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Renderer>().material.color = Color.red;                    
+                    }
+                    else{
+                        audio.transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Renderer>().material.color = Color.white; 
+                    }
                 }
-                value = !value;
+                
                 this.gameObject.GetComponent<AudioSource>().mute = false;
+                
+                audioComponents = padre.GetComponentsInChildren<AudioControl>();
+                
+                if(value){
+                    foreach (AudioControl audio in audioComponents){
+                        if (audio.value){                        
+                            audio.transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).GetComponentInChildren<Renderer>().material.color = Color.white;
+                        }
+                        audio.value = false;
+                    }
+                    value = true;
+                }                
+
+                if(value){
+                   transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).GetComponentInChildren<Renderer>().material.color = Color.green;                   
+                }
+                else{
+                    transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(3).GetComponentInChildren<Renderer>().material.color = Color.white;
+                }
+                transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Renderer>().material.color = Color.white;
+
+
                 break;
             case 3:
-                Destroy(this.gameObject);
+                Destroy(transform.parent.gameObject);
                 break;
             default: break;
         }
@@ -48,12 +89,11 @@ public class AudioControl : MonoBehaviour
         menu.SetActive(false);
         Selector.flag_ambiente = true;
         this.gameObject.GetComponent<AudioSource>().enabled = false;
-        value = true;
+        value = false;
         changeVolume = false;
     }
     void FixedUpdate()
     {
-
         if (Selector.tempo_control <= 0) {
             //como sincronizar las canciones en fase: mago.mago.mago(mago);            
             Selector.flag_ambiente = false;

@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsGazed: 0
-  inactiveMaterial: {fileID: 2100000, guid: 29cfbe3df797cfd4eaace6e9ab5ba808, type: 2}
-  gazedAtMaterial: {fileID: 2100000, guid: 29cfbe3df797cfd4eaace6e9ab5ba808, type: 2}
+  inactiveMaterial: {fileID: 0}
+  gazedAtMaterial: {fileID: 0}
 --- !u!1 &2291169658150013375
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +266,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: de949949fc7a96d4b8d518bb1012a016, type: 2}
+  - {fileID: 2100000, guid: 06bc8b8e68883a243823a2944ddc28e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -379,8 +379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsGazed: 0
-  inactiveMaterial: {fileID: 2100000, guid: 30d48b4dc5855e046b37b227268a2ee9, type: 2}
-  gazedAtMaterial: {fileID: 2100000, guid: 30d48b4dc5855e046b37b227268a2ee9, type: 2}
+  inactiveMaterial: {fileID: 2100000, guid: 06bc8b8e68883a243823a2944ddc28e8, type: 2}
+  gazedAtMaterial: {fileID: 2100000, guid: 06bc8b8e68883a243823a2944ddc28e8, type: 2}
 --- !u!1 &2348881689060555509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,8 +1354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsGazed: 0
-  inactiveMaterial: {fileID: 2100000, guid: 30d48b4dc5855e046b37b227268a2ee9, type: 2}
-  gazedAtMaterial: {fileID: 2100000, guid: 30d48b4dc5855e046b37b227268a2ee9, type: 2}
+  inactiveMaterial: {fileID: 0}
+  gazedAtMaterial: {fileID: 0}
 --- !u!1 &6870387343284055090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8964169026805759085
 RectTransform:
   m_ObjectHideFlags: 0

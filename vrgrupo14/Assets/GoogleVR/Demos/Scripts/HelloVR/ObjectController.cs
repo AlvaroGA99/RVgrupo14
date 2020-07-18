@@ -47,9 +47,10 @@ namespace GoogleVR.HelloVR
         {
             
             IsGazed = gazedAt;
-            if(IsGazed){gazedAtMaterial.color = gazeado;}else{inactiveMaterial.color = nogazeado;}            
+                        
             if (inactiveMaterial != null && gazedAtMaterial != null)
             {
+                if(IsGazed){gazedAtMaterial.color = gazeado;}else{inactiveMaterial.color = nogazeado;}
                 myRenderer.material = gazedAt ? gazedAtMaterial : inactiveMaterial;
                 return;
             }
