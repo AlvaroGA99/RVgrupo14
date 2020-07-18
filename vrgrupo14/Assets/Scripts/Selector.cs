@@ -17,7 +17,7 @@ public class Selector : MonoBehaviour
     [SerializeField]private GameObject Canvas_Menu;
     [SerializeField]private GameObject Pivote;
     [SerializeField]public GameObject camara;
-    private GameObject padre;
+    GameObject padre;
 
     [SerializeField] int contador = 1; //interfaz general
 
@@ -37,6 +37,8 @@ public class Selector : MonoBehaviour
 
     public AudioMixer master;
     public static bool play = true;
+    [SerializeField] public Material mat_Play;
+    [SerializeField] public Material mat_Pause;
     
     public static bool Selection_Flag = false;
     public static bool flag_scale = false;
@@ -59,7 +61,7 @@ public class Selector : MonoBehaviour
     public GameObject Sala0; //Menu principal
     public GameObject Sala1; //sala Electronica
     public GameObject Sala2; //sala Orquestal   
-    public GameObject Ambiente;
+    GameObject Ambiente;
     public void sincronizar()
     {
         tempo_control = 9;
@@ -235,6 +237,20 @@ public class Selector : MonoBehaviour
     }
     public void playPauseStop(bool stop){        
         play = !play && !stop;
+
+        if(play){
+            Config_M.transform.GetChild(2).transform.GetChild(4).GetComponent<Renderer>().material = mat_Pause;
+            Ambiente.GetComponent<AudioSource>().Play();                
+        }
+        else if(stop){
+            Config_M.transform.GetChild(2).transform.GetChild(4).GetComponent<Renderer>().material = mat_Play;
+            Ambiente.GetComponent<AudioSource>().Stop();                
+        }
+        else{
+            Config_M.transform.GetChild(2).transform.GetChild(4).GetComponent<Renderer>().material = mat_Play;
+            Ambiente.GetComponent<AudioSource>().Pause();                
+        }
+
         audioComponents = padre.GetComponentsInChildren<AudioSource>();
 
         foreach (AudioSource audio in audioComponents){
@@ -249,15 +265,6 @@ public class Selector : MonoBehaviour
             }
         }
 
-        if(play){                    
-            Ambiente.GetComponent<AudioSource>().Play();                
-        }
-        else if(stop){
-            Ambiente.GetComponent<AudioSource>().Stop();                
-        }
-        else{
-            Ambiente.GetComponent<AudioSource>().Pause();                
-        }
         
     }
     
