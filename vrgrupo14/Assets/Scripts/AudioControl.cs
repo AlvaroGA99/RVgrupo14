@@ -100,6 +100,9 @@ public class AudioControl : MonoBehaviour
             this.gameObject.GetComponent<AudioSource>().enabled = true;            
             Selector.flag_sound = false;
         }
+
+        if(audioComponents.Length == 0){Selector.flag_ambiente = true;}
+
         if(changeVolume){
             this.gameObject.GetComponent<ResonanceAudioSource>().gainDb += direction * volumeIncrement;
         }

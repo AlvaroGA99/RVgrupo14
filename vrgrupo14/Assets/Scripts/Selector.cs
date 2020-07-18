@@ -4,6 +4,7 @@ using GoogleVR.HelloVR;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 
@@ -16,11 +17,16 @@ public class Selector : MonoBehaviour
     [SerializeField]private GameObject Canvas_Menu;
     [SerializeField]private GameObject Pivote;
     [SerializeField]public GameObject camara;
+    private GameObject padre;
 
     [SerializeField] int contador = 1; //interfaz general
 
-    [SerializeField] float velocity = 15f;
+    Component[] audioComponents;
+    [SerializeField] float velocity = 15f;    
     [SerializeField] float scaleValue = 0.5f;
+
+    float audioPitch;
+    int instruccion;
     Vector3 scaleVec;
     int scaleAxis;
     bool passScale;
@@ -28,6 +34,10 @@ public class Selector : MonoBehaviour
     public static double tempo_control = tempo;     
 
     //flags de interfaz y control
+
+    public AudioMixer master;
+    public static bool play = true;
+    
     public static bool Selection_Flag = false;
     public static bool flag_scale = false;
     public static bool flag_ambiente = false;
@@ -49,7 +59,7 @@ public class Selector : MonoBehaviour
     public GameObject Sala0; //Menu principal
     public GameObject Sala1; //sala Electronica
     public GameObject Sala2; //sala Orquestal   
-
+    public GameObject Ambiente;
     public void sincronizar()
     {
         tempo_control = 9;
@@ -88,6 +98,7 @@ public class Selector : MonoBehaviour
 
     private void Start()
     {
+        padre = GameObject.FindGameObjectWithTag("sonidospadre");
         Selection_Flag = false;
         storePresets();
         scene = SceneManager.GetActiveScene();
@@ -95,11 +106,15 @@ public class Selector : MonoBehaviour
         
         if(SceneManager.GetActiveScene().name != "StartMenu")
         GetRoomInfo();
-
+        
+        audioPitch = 1f;
+        instruccion = -1;
         flag_ambiente = true;
         contador = 1;
         tempo_control = 0;
         velocity *= 0.001f;
+
+        Ambiente = GameObject.Find("Ambiental");
     }
 //escalado de la sala
     public void ScalePositive(int axis){
@@ -198,9 +213,82 @@ public class Selector : MonoBehaviour
         roomPresets[index].setPreset(ResonanceRoom);
     }
 
+    //Métodos 
+
+    private IEnumerator controlador(int time){
+        yield return new WaitForSeconds(time);
+        switch(instruccion){
+            case 0:
+                playPauseStop(false);
+                break;
+            case 1:
+                stop();
+                break;            
+            default: break;
+        }
+
+    }
     
+    public void controladorInstruccion(int n){
+        instruccion = n;
+        StartCoroutine("controlador",1);
+    }
+    public void playPauseStop(bool stop){        
+        play = !play && !stop;
+        audioComponents = padre.GetComponentsInChildren<AudioSource>();
+
+        foreach (AudioSource audio in audioComponents){
+            if(play){
+                audio.Play();
+            }
+            else if(stop){
+                audio.Stop();
+            }
+            else{
+                audio.Pause();
+            }
+        }
+
+        if(play){                    
+            Ambiente.GetComponent<AudioSource>().Play();                
+        }
+        else if(stop){
+            Ambiente.GetComponent<AudioSource>().Stop();                
+        }
+        else{
+            Ambiente.GetComponent<AudioSource>().Pause();                
+        }
+        
+    }
+    
+    public void stop(){
+        audioPitch = 1f;
+        master.SetFloat("pitch", audioPitch);
+        playPauseStop(true);
+    }
+
+    public void Exit_Instruction(){
+        StopCoroutine("controlador");
+    }
+
+    int pitch_flag = 0;
+    public void Pitch_In(int n){
+        pitch_flag = n;
+    }
+    public void Pitch_Out(){
+        pitch_flag = 0;
+    }
+    public void PitchMas(){
+        audioPitch += 0.001f;
+        master.SetFloat("pitch", audioPitch);
+    }
+    public void PitchMenos(){
+        audioPitch -= 0.001f;
+        master.SetFloat("pitch", audioPitch);
+    }
+
     public GameObject presetName;
-    public GameObject roomInfo;
+    public GameObject roomInfo;    
     public void setP_In(int index){
         StartCoroutine(PressetSettings(1,index));
     }
@@ -227,6 +315,7 @@ public class Selector : MonoBehaviour
             GetRoomInfo();
 
     }
+
     public void storePresets(){
         float[] auxRevProperties;
         
@@ -262,7 +351,16 @@ public class Selector : MonoBehaviour
         
     }
     public void FixedUpdate()
-    {
+    {   
+        switch(pitch_flag){
+            case 1:
+                PitchMas();
+                break;
+            case 2:
+                PitchMenos();
+                break;
+            default: break;            
+        } 
         if(flag_scale){
             switch (scaleAxis){                
             case 0:
@@ -283,6 +381,7 @@ public class Selector : MonoBehaviour
             }
             Room.transform.localScale = scaleVec;
         }
+        
         if (movW)
         {
             this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + velocity);
@@ -304,7 +403,7 @@ public class Selector : MonoBehaviour
             Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x + velocity, Movement.transform.localPosition.y, Movement.transform.localPosition.z);
         }
 
-        if (flag_sound)
+        if (flag_sound && play)
         {                       
             tempo_control -= Time.deltaTime;
             //Debug.Log(tempo_control);
@@ -313,10 +412,8 @@ public class Selector : MonoBehaviour
         
         if (!flag_ambiente)
         {
-            GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = true;            
-        }
-
-        //else GameObject.Find("Ambiental").GetComponent<AudioSource>().mute = false;
+            Ambiente.GetComponent<AudioSource>().mute = true;
+        }else Ambiente.GetComponent<AudioSource>().mute = false;
 
         if (Selection_Flag && Sala0.GetComponent<ObjectController>().IsGazed)
         {

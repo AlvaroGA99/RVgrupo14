@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Orquestal.unity
+- path: Assets/Scenes/Electronica.unity
   isLoaded: 1
   isActive: 1
