@@ -33,6 +33,8 @@ namespace GoogleVR.HelloVR
         public Material inactiveMaterial;
         /// <summary>The material to use when this object is active (gazed at).</summary>
         public Material gazedAtMaterial;
+        Color gazeado = new Color(0.9f,1.2f,1.2f);
+        Color nogazeado = new Color(0.5f,0.5f,0.5f);
 
         private Vector3 startingPosition;
         private Renderer myRenderer;
@@ -43,7 +45,9 @@ namespace GoogleVR.HelloVR
         /// </param>
         public void SetGazedAt(bool gazedAt)
         {
+            
             IsGazed = gazedAt;
+            if(IsGazed){gazedAtMaterial.color = gazeado;}else{inactiveMaterial.color = nogazeado;}            
             if (inactiveMaterial != null && gazedAtMaterial != null)
             {
                 myRenderer.material = gazedAt ? gazedAtMaterial : inactiveMaterial;

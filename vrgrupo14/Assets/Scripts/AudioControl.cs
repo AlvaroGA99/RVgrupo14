@@ -35,6 +35,9 @@ public class AudioControl : MonoBehaviour
                 value = !value;
                 this.gameObject.GetComponent<AudioSource>().mute = false;
                 break;
+            case 3:
+                Destroy(this.gameObject);
+                break;
             default: break;
         }
     }
@@ -80,6 +83,10 @@ public class AudioControl : MonoBehaviour
     public void Solo(){
         instruction = 2;
         StartCoroutine("countdown",1); 
+    }
+    public void Borrar(){
+        instruction = 3;
+        StartCoroutine("countdown",1);
     }
     
     public void Intruction_OUT(){

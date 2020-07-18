@@ -33,6 +33,8 @@ public class Selector : MonoBehaviour
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
     public static bool flag_scan = false;
+    Color activo = Color.green;
+    Color inactivo = Color.red;
 
     //movimiento
     public bool movW = false;
@@ -344,11 +346,11 @@ public class Selector : MonoBehaviour
         if(Selection_Flag && MenuControl.GetComponent<ObjectController>().IsGazed){         
             Selection_Flag = false;
             if(Canvas_Menu.activeSelf){
-                MenuControl.GetComponent<AudioSource>().Play();
+                MenuControl.GetComponent<Renderer>().material.color = inactivo;
                 closeAll();
                 Canvas_Menu.SetActive(false);
             }else{
-                MenuControl.GetComponent<AudioSource>().Play();
+                MenuControl.GetComponent<Renderer>().material.color = activo;
                 closeAll();
                 Canvas_Menu.SetActive(true);
             }
