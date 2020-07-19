@@ -140,7 +140,7 @@ MonoBehaviour:
   m_PoseProviderComponent: {fileID: 0}
   m_TrackingType: 1
   m_UpdateType: 1
-  m_UseRelativeTransform: 1
+  m_UseRelativeTransform: 0
 --- !u!114 &254176528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c127e7c19b22545ad0778c358d5b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Surface: {fileID: 0}
 --- !u!1 &8820615201605477271
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +322,9 @@ MonoBehaviour:
   contador: 3
   velocity: 30
   scaleValue: 0.01
+  master: {fileID: 0}
+  mat_Play: {fileID: 0}
+  mat_Pause: {fileID: 0}
   movW: 0
   movD: 0
   movS: 0

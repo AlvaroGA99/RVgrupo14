@@ -118,15 +118,16 @@ namespace PaperPlaneTools.AR {
 				markerOnScene.bestMatchIndex = -1;
 					if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
 					{
-						//if(markerOnScene.gameObject != null){
+						
 							markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
 							StartCoroutine("Scan", 2);
-						//}
+						
 					}
 					else
 					{
 						StopCoroutine("Scan");
 						Selector.flag_scan = true;
+						
 						markerOnScene.gameObject.GetComponentInChildren<AudioControl>().menu.SetActive(false);
 						Component[] sonidos = GameObject.FindGameObjectWithTag("sonidospadre").GetComponentsInChildren<AudioControl>();
 						foreach (AudioControl s in sonidos){

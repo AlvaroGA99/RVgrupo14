@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 7}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 498}
   m_MaxSize: {x: 16012, y: 14048}
   vertical: 0
-  controlID: 94
+  controlID: 116
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 498}
   m_MaxSize: {x: 12010, y: 14048}
   vertical: 1
-  controlID: 95
+  controlID: 146
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 224}
   m_MaxSize: {x: 12010, y: 4024}
   vertical: 0
-  controlID: 96
+  controlID: 147
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -482,20 +482,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Audios/Sala Orquestal/prefabs 1
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Audios/Sala Orquestal/prefabs 1
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Desktop\programacion\RVgrupo14\vrgrupo14
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: e62b0000
-    m_LastClickedID: 11238
-    m_ExpandedIDs: 00000000e62b0000162c0000622c0000de2c0000e42c0000362d0000562d0000f62d00001c2e0000302e0000382e00002c2f00003c2f00005e2f0000ae2f0000523000000e3100009a310000f4310000123200002c3200004e320000543200004c33000050330000623300001e340000483b00004a3b000000ca9a3b
+    m_SelectedIDs: 262e0000
+    m_LastClickedID: 11814
+    m_ExpandedIDs: 00000000ca2b0000fa2b0000462c0000c22c0000c82c00001a2d00003a2d0000da2d0000002e0000142e00001c2e0000122f0000222f0000442f0000942f000038300000f430000080310000da310000f831000012320000343200003a320000323300003633000048330000043400003c3b00003e3b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -523,7 +523,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e62b0000162c0000622c0000de2c0000e42c0000362d0000562d0000f62d00001c2e0000302e0000382e00002c2f00003c2f00005e2f0000ae2f0000523000000e3100009a310000f4310000123200002c3200004e320000543200004c33000050330000623300001e340000483b00004a3b0000
+    m_ExpandedIDs: 00000000ca2b0000fa2b0000462c0000c22c0000c82c00001a2d00003a2d0000da2d0000002e0000142e00001c2e0000122f0000222f0000442f0000942f000038300000f430000080310000da310000f831000012320000343200003a320000323300003633000048330000043400003c3b00003e3b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -642,9 +642,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 24f9ffff
-      m_LastClickedID: -1756
-      m_ExpandedIDs: 26f9ffffccfbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: defbffffd6340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

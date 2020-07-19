@@ -38,7 +38,7 @@ public class AudioControl : MonoBehaviour
                     }
                     audio.value = false;
                 }
-                break;
+                break;                                       
             case 2:
                 value = !value;           
                 audioComponents = padre.GetComponentsInChildren<AudioSource>();
@@ -76,9 +76,13 @@ public class AudioControl : MonoBehaviour
 
 
                 break;
-            case 3:                
+            case 3:
+                this.gameObject.GetComponent<AudioSource>().volume = 1f;
+                this.gameObject.GetComponent<AudioSource>().mute=false;              
                 transform.parent.gameObject.SetActive(false);
-                break;
+                if(!value){
+                    break;
+                }else goto case 2;
             default: break;
         }
     }

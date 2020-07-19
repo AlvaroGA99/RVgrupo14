@@ -7,11 +7,11 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/StartMenu.unity
-    guid: 152845486f036b64890ed32305387c35
+    guid: 9f287115d8373e54187bc8d503bccf93
   - enabled: 1
     path: Assets/Scenes/Electronica.unity
-    guid: 0a44f1bb2ab17ca4fb3a1e850df461af
+    guid: 7d89e5b9be4750041aa85ad7b12b815a
   - enabled: 1
     path: Assets/Scenes/Orquestal.unity
-    guid: a29216f674060da4bbcf14b7e497e8d8
+    guid: 8bcba74af0f285d418001448e45255be
   m_configObjects: {}

@@ -399,7 +399,7 @@ public class Selector : MonoBehaviour
             Room.transform.localScale = scaleVec;
         }
         
-        flag_ambiente = CheckAmbiente();
+        if(!flag_scan) flag_ambiente = CheckAmbiente();
 
         if (movW)
         {
