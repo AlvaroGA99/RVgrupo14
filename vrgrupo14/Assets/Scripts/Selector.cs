@@ -358,8 +358,6 @@ public class Selector : MonoBehaviour
     }
 
     public bool CheckAmbiente(){
-        
-        
         for(int i = 0; i < padre.transform.childCount; i++){
             if (padre.transform.GetChild(i).gameObject.activeSelf){
                 return false;
