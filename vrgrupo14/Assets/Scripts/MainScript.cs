@@ -104,35 +104,24 @@ namespace PaperPlaneTools.AR {
 					}
 				}
 
-				ProcessMarkesWithSameId(markerObject, gameObjects[markerObject.markerId], foundedMarkers);
+				ProcessMarkersWithSameId(markerObject, gameObjects[markerObject.markerId], foundedMarkers);
 			}
 		}
 
-		private void ProcessMarkesWithSameId(MarkerObject markerObject, List<MarkerOnScene> gameObjects, List<int> foundedMarkers) {
-			int index = 0;                        
-			//modificación
-			if(Selector.flag_killAudio){
-				Debug.Log(gameObjects.Count);
-				Destroy(Selector.destroyAudio);								
-				foreach(MarkerOnScene marker in gameObjects){
-					if (marker.gameObject.Equals(Selector.destroyAudio)){
-						gameObjects.Remove(marker);
-					}
-				}
-				Selector.flag_killAudio = false;
-				Debug.Log(gameObjects.Count);
-			}
+		private void ProcessMarkersWithSameId(MarkerObject markerObject, List<MarkerOnScene> gameObjects, List<int> foundedMarkers) {
+			int index = 0;			
 
             index = gameObjects.Count - 1;
 
 			while (index >= 0) {
                 MarkerOnScene markerOnScene = gameObjects[index];
 				markerOnScene.bestMatchIndex = -1;
-				if(!Selector.flag_killAudio){
 					if (markerOnScene.destroyAt > 0 && markerOnScene.destroyAt < Time.fixedTime)
 					{
-						markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
-						StartCoroutine("Scan", 2);
+						//if(markerOnScene.gameObject != null){
+							markerOnScene.gameObject.transform.parent = GameObject.FindGameObjectWithTag("sonidospadre").GetComponent<Transform>();
+							StartCoroutine("Scan", 2);
+						//}
 					}
 					else
 					{
@@ -143,13 +132,13 @@ namespace PaperPlaneTools.AR {
 						foreach (AudioControl s in sonidos){
 							s.menu.SetActive(false);
 						}
+						markerOnScene.gameObject.SetActive(true);
 						markerOnScene.gameObject.transform.parent = player.GetComponent<Transform>();
 					}
-				}
 				--index;
                 
 			}
-
+			
 			index = foundedMarkers.Count - 1;
 
 			// Match markers with existing gameObjects
@@ -177,6 +166,7 @@ namespace PaperPlaneTools.AR {
 				} 
 				--index;
 			}
+
 
 			//Destroy excessive objects
             

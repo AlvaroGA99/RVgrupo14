@@ -23,8 +23,7 @@ public class Selector : MonoBehaviour
 
     Component[] audioComponents;
     [SerializeField] float velocity = 15f;    
-    [SerializeField] float scaleValue = 0.5f;
-    public static GameObject destroyAudio;
+    [SerializeField] float scaleValue = 0.5f;    
     float audioPitch;
     int instruccion;
     Vector3 scaleVec;
@@ -44,8 +43,7 @@ public class Selector : MonoBehaviour
     public static bool flag_scale = false;
     public static bool flag_ambiente = false;
     public static bool flag_sound = false;
-    public static bool flag_scan = false;
-    public static bool flag_killAudio = false;
+    public static bool flag_scan = false;    
     Color activo = Color.green;
     Color inactivo = Color.red;
 
@@ -359,10 +357,18 @@ public class Selector : MonoBehaviour
         
     }
 
-    public static void killAudio(GameObject audio){
-        destroyAudio = audio;
-        flag_killAudio = true;
+    public bool CheckAmbiente(){
+        
+        
+        for(int i = 0; i < padre.transform.childCount; i++){
+            if (padre.transform.GetChild(i).gameObject.activeSelf){
+                return false;
+            }
+        }
+
+        return true;
     }
+    
     public void FixedUpdate()
     {   
         switch(pitch_flag){
@@ -395,6 +401,8 @@ public class Selector : MonoBehaviour
             Room.transform.localScale = scaleVec;
         }
         
+        flag_ambiente = CheckAmbiente();
+
         if (movW)
         {
             this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + velocity);
@@ -415,11 +423,9 @@ public class Selector : MonoBehaviour
             this.transform.localPosition = new Vector3(this.transform.localPosition.x + velocity, this.transform.localPosition.y, this.transform.localPosition.z);
             Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x + velocity, Movement.transform.localPosition.y, Movement.transform.localPosition.z);
         }
-
         if (flag_sound && play)
         {                       
             tempo_control -= Time.deltaTime;
-            //Debug.Log(tempo_control);
         }
         else sincronizar();
         

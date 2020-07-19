@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 719
     height: 573
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 224}
+  m_MaxSize: {x: 4004, y: 4024}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 348}
   m_MaxSize: {x: 16012, y: 8048}
   vertical: 0
-  controlID: 50
+  controlID: 49
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,8 +146,8 @@ MonoBehaviour:
     y: 573
     width: 1531
     height: 374
-  m_MinSize: {x: 102, y: 124}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 15}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 348}
   m_MaxSize: {x: 12010, y: 8048}
   vertical: 1
-  controlID: 51
+  controlID: 50
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 224}
   m_MaxSize: {x: 12010, y: 4024}
   vertical: 0
-  controlID: 76
+  controlID: 51
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -482,20 +482,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Rodron\Documents\RVgrupo14\vrgrupo14
+  m_LastProjectPath: D:\Desktop\programacion\RVgrupo14\vrgrupo14
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 1471}
-    m_SelectedIDs: 344c0000
-    m_LastClickedID: 19508
-    m_ExpandedIDs: 000000003a46000068460000a2460000144700001a470000684700008247000004480000264800003848000040480000124900001e4900003c4900007e4900001e4a0000cc4a00004a4b00009a4b0000b84b0000ce4b0000ec4b0000f24b0000ba4c0000be4c0000d04c0000744d0000705400007254000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: ea2b0000
+    m_LastClickedID: 11242
+    m_ExpandedIDs: 00000000ea2b00001a2c0000662c0000e22c0000e82c00003a2d00005a2d0000fa2d0000202e0000342e00003c2e0000302f0000402f0000622f0000b22f000056300000123100009e310000f83100001632000030320000523200005832000050330000543300006633000022340000dc3b0000de3b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -523,7 +523,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003a46000068460000a2460000144700001a470000684700008247000004480000264800003848000040480000124900001e4900003c4900007e4900001e4a0000cc4a00004a4b00009a4b0000b84b0000ce4b0000ec4b0000f24b0000ba4c0000be4c0000d04c0000744d00007054000072540000
+    m_ExpandedIDs: 00000000ea2b00001a2c0000662c0000e22c0000e82c00003a2d00005a2d0000fa2d0000202e0000342e00003c2e0000302f0000402f0000622f0000b22f000056300000123100009e310000f83100001632000030320000523200005832000050330000543300006633000022340000dc3b0000de3b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -642,9 +642,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 42d8ffff
-      m_LastClickedID: 0
-      m_ExpandedIDs: 46d6ffffbad8ffff7cddffff8adfffff30e3ffff80540000
+      m_SelectedIDs: 10350000
+      m_LastClickedID: 13584
+      m_ExpandedIDs: 9aabffffbef9ffffccfbffffce340000fc340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -734,9 +734,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.13514295, y: 0.86477757, z: -0.34822387, w: -0.3356135}
   m_Size:
-    m_Target: 4.503114
+    m_Target: 21.068275
     speed: 2
-    m_Value: 4.503114
+    m_Value: 21.068275
   m_Ortho:
     m_Target: 0
     speed: 2

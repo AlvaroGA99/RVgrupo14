@@ -77,7 +77,7 @@ public class AudioControl : MonoBehaviour
 
                 break;
             case 3:                
-                Selector.killAudio(transform.parent.gameObject);
+                transform.parent.gameObject.SetActive(false);
                 break;
             default: break;
         }
@@ -87,7 +87,7 @@ public class AudioControl : MonoBehaviour
         padre = GameObject.FindGameObjectWithTag("sonidospadre");
         playerReference = GameObject.FindGameObjectWithTag("MainCamera");
         menu.SetActive(false);
-        Selector.flag_ambiente = true;
+        Selector.flag_ambiente = false;
         this.gameObject.GetComponent<AudioSource>().enabled = false;
         value = false;
         changeVolume = false;
@@ -101,8 +101,6 @@ public class AudioControl : MonoBehaviour
             Selector.flag_sound = false;
         }
         
-        if(padre.transform.childCount == 0){Selector.flag_ambiente = true;}
-
         if(changeVolume){
             this.gameObject.GetComponent<ResonanceAudioSource>().gainDb += direction * volumeIncrement;
         }
