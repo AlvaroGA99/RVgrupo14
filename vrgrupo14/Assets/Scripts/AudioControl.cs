@@ -17,6 +17,7 @@ public class AudioControl : MonoBehaviour
     GameObject playerReference;
     private IEnumerator countdown(int s){
         yield return new WaitForSeconds(s);
+        Selector.playSelectSound();
         switch(instruction){
             case 0:
                 if (!Selector.flag_scan){
@@ -107,40 +108,47 @@ public class AudioControl : MonoBehaviour
     }
 
     public void ShowMenu(){
+        Selector.playInSound();
         instruction = 0;
         StartCoroutine("countdown",1);        
     }
 
-    public void HideMenu(){
+    public void HideMenu(){        
         Intruction_OUT();
         menu.SetActive(false);
     }
     
     public void Mute(){
+        Selector.playInSound();
         instruction = 1;
         StartCoroutine("countdown",1);        
     }
 
     public void Solo(){
+        Selector.playInSound();
         instruction = 2;
         StartCoroutine("countdown",1); 
     }
     public void Borrar(){
+        Selector.playInSound();
         instruction = 3;
         StartCoroutine("countdown",1);
     }
     
     public void Intruction_OUT(){
+        Selector.playOutSound();
         instruction = -1;
         StopCoroutine("countdown");
     }
     
     public void SetVolume (int value){        
+        Selector.playInSound();
         changeVolume = true;
         direction = value;
     }
 
     public void StopVolumeChange(){
+        Selector.playOutSound();
         changeVolume = false;
     }
 }

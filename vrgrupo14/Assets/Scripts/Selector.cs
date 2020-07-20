@@ -21,6 +21,9 @@ public class Selector : MonoBehaviour
 
     [SerializeField] int contador = 1; //interfaz general
 
+    public static AudioSource uiSound;
+    public static AudioSource uiSound2;
+
     Component[] audioComponents;
     [SerializeField] float velocity = 15f;    
     [SerializeField] float scaleValue = 0.5f;    
@@ -82,6 +85,7 @@ public class Selector : MonoBehaviour
             contador--;
             yield return new WaitForSeconds(1);
         }
+        playSelectSound();
         //Debug.Log("Countdown Complete!");
         Selection_Flag = true;
     }
@@ -114,6 +118,8 @@ public class Selector : MonoBehaviour
         contador = 1;
         tempo_control = 0;
         velocity *= 0.001f;
+        uiSound = this.gameObject.GetComponents<AudioSource>()[0];
+        uiSound2 = this.gameObject.GetComponents<AudioSource>()[1];
 
         Ambiente = GameObject.Find("Ambiental");
     }
@@ -127,13 +133,15 @@ public class Selector : MonoBehaviour
         scaleValue = -Mathf.Abs(scaleValue);        
         ScaleRoom(axis);
     }
-    public void ScaleRoom(int axis){        
+    public void ScaleRoom(int axis){
+        playInSound();     
         scaleAxis = axis;
         flag_scale = true;
     }
 
     public void OUTscale()
     {
+        playOutSound();
         flag_scale = false;
     }
 //Control del menu
@@ -143,39 +151,48 @@ public class Selector : MonoBehaviour
     public GameObject Presets_M;
     public GameObject Config_M;
     public void Escalas_In(){
+        playInSound();
         StartCoroutine("Escalas", 1);
     }
     public void Escalas_Out(){
+        playOutSound();
         StopCoroutine("Escalas");
     }
     private IEnumerator Escalas(int time){
         yield return new WaitForSeconds(time);
+        playSelectSound();
 
         General_M.SetActive(false);
         Escalas_M.SetActive(!Escalas_M.activeSelf);
 
     }
     public void Presets_In(){
+        playInSound();
         StartCoroutine("Presets", 1);
     }
     public void Presets_Out(){
+        playOutSound();
         StopCoroutine("Presets");
     }
     private IEnumerator Presets(int time){
         yield return new WaitForSeconds(time);
+        playSelectSound();
         GetRoomInfo();
         General_M.SetActive(false);
         Presets_M.SetActive(!Presets_M.activeSelf);
 
     }
     public void Config_In(){
+        playInSound();
         StartCoroutine("Config", 1);
     }
     public void Config_Out(){
+        playOutSound();
         StopCoroutine("Config");
     }
     private IEnumerator Config(int time){
         yield return new WaitForSeconds(time);
+        playSelectSound();
 
         General_M.SetActive(false);
         Config_M.SetActive(!Config_M.activeSelf);
@@ -191,22 +208,27 @@ public class Selector : MonoBehaviour
 //movimiento del jugador
     public void movement_W()
     {
+        playInSound();
         movW = true;
     }
     public void movement_A()
     {
+        playInSound();
         movA = true;
     }
     public void movement_S()
     {
+        playInSound();
         movS = true;
     }
     public void movement_D()
     {
+        playInSound();
         movD = true;
     }
     public void OUTmovement()
     {
+        playOutSound();
         movA = false; movS = false; movD = false; movW = false;
     }
     //presets
@@ -215,9 +237,30 @@ public class Selector : MonoBehaviour
     }
 
     //Métodos 
+    public static void playInSound(){        
+        uiSound.pitch = 1f;            
+        uiSound.volume = 0.75f;
+        if(!uiSound.isPlaying){            
+            uiSound.Play();                       
+        }
+    }
+
+    public static void playOutSound(){        
+        uiSound.volume = 1f;
+        uiSound.pitch = 0.5f;
+        if(!uiSound2.isPlaying){
+            uiSound.Play();
+        }    
+    }
+
+    public static void playSelectSound(){
+        uiSound2.Play();
+    }
+
 
     private IEnumerator controlador(int time){
         yield return new WaitForSeconds(time);
+        playSelectSound();
         switch(instruccion){
             case 0:
                 playPauseStop(false);
@@ -231,6 +274,7 @@ public class Selector : MonoBehaviour
     }
     
     public void controladorInstruccion(int n){
+        playInSound();
         instruccion = n;
         StartCoroutine("controlador",1);
     }
@@ -274,14 +318,17 @@ public class Selector : MonoBehaviour
     }
 
     public void Exit_Instruction(){
+        playOutSound();
         StopCoroutine("controlador");
     }
 
     int pitch_flag = 0;
     public void Pitch_In(int n){
+        playInSound();
         pitch_flag = n;
     }
     public void Pitch_Out(){
+        playOutSound();
         pitch_flag = 0;
     }
     public void PitchMas(){
@@ -296,9 +343,11 @@ public class Selector : MonoBehaviour
     public GameObject presetName;
     public GameObject roomInfo;    
     public void setP_In(int index){
+        playInSound();
         StartCoroutine(PressetSettings(1,index));
     }
     public void setP_Out(){
+        playOutSound();
         StopAllCoroutines();
     }
     public void GetRoomInfo(){ //magia amigos, magia
@@ -314,6 +363,7 @@ public class Selector : MonoBehaviour
     
     private IEnumerator PressetSettings(int time, int index){
         yield return new WaitForSeconds(time);
+        playSelectSound();
         
             setPreset(index);
             presetName.GetComponent<TextMeshProUGUI>().text = roomPresets[index].presetName;
