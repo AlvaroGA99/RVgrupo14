@@ -780,7 +780,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 248799cb4acba48f7b3ee842a80f788c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: c5fdc15c013662e49902f521cce127b0, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.368
   m_Pitch: 1
@@ -1390,7 +1390,7 @@ GameObject:
   - component: {fileID: 1586194364}
   m_Layer: 0
   m_Name: Null
-  m_TagString: Untagged
+  m_TagString: sonidospadre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
