@@ -78,8 +78,18 @@ public class AudioControl : MonoBehaviour
 
                 break;
             case 3:                
+                this.gameObject.GetComponent<AudioSource>().volume = 1f;
+                this.gameObject.GetComponent<AudioSource>().mute=false;                
+                transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Renderer>().material.color = Color.white;
+                
                 transform.parent.gameObject.SetActive(false);
-                break;
+                
+                if(!value){
+                    break;
+                }               
+                else{
+                    goto case 2;
+                }
             default: break;
         }
     }

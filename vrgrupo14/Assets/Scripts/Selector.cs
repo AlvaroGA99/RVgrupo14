@@ -257,7 +257,6 @@ public class Selector : MonoBehaviour
         uiSound2.Play();
     }
 
-
     private IEnumerator controlador(int time){
         yield return new WaitForSeconds(time);
         playSelectSound();
@@ -408,8 +407,6 @@ public class Selector : MonoBehaviour
     }
 
     public bool CheckAmbiente(){
-        
-        
         for(int i = 0; i < padre.transform.childCount; i++){
             if (padre.transform.GetChild(i).gameObject.activeSelf){
                 return false;
