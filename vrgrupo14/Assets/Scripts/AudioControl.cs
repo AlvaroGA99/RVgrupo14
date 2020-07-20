@@ -78,13 +78,19 @@ public class AudioControl : MonoBehaviour
                 break;
             case 3:
                 this.gameObject.GetComponent<AudioSource>().volume = 1f;
-                this.gameObject.GetComponent<AudioSource>().mute=false;              
+                this.gameObject.GetComponent<AudioSource>().mute=false;                
+                transform.parent.transform.GetChild(0).transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<Renderer>().material.color = Color.white;
+                
                 transform.parent.gameObject.SetActive(false);
+                
                 if(!value){
                     break;
-                }else goto case 2;
+                }
+                
+                goto case 2;
             default: break;
         }
+        Selector.playSelectSound();
     }
     void Start()
     {
@@ -111,40 +117,47 @@ public class AudioControl : MonoBehaviour
     }
 
     public void ShowMenu(){
+        Selector.playInSound();
         instruction = 0;
         StartCoroutine("countdown",1);        
     }
 
-    public void HideMenu(){
+    public void HideMenu(){        
         Intruction_OUT();
         menu.SetActive(false);
     }
     
     public void Mute(){
+        Selector.playInSound();
         instruction = 1;
         StartCoroutine("countdown",1);        
     }
 
     public void Solo(){
+        Selector.playInSound();
         instruction = 2;
         StartCoroutine("countdown",1); 
     }
     public void Borrar(){
+        Selector.playInSound();
         instruction = 3;
         StartCoroutine("countdown",1);
     }
     
     public void Intruction_OUT(){
+        Selector.playOutSound();
         instruction = -1;
         StopCoroutine("countdown");
     }
     
     public void SetVolume (int value){        
+        Selector.playInSound();
         changeVolume = true;
         direction = value;
     }
 
     public void StopVolumeChange(){
+        Selector.playOutSound();
         changeVolume = false;
     }
 }

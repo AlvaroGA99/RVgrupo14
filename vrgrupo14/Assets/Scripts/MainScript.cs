@@ -92,6 +92,7 @@ namespace PaperPlaneTools.AR {
         }
 
         private void ProcessFrame (Mat mat, int width, int height) {
+			Debug.Log("El main hace cosas");
 			List<int> markerIds = markerDetector.Detect (mat, width, height);
 
 			int count = 0;

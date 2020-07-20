@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Preset : MonoBehaviour
+public class Preset
 {
     public string presetName;
     Vector3 size;

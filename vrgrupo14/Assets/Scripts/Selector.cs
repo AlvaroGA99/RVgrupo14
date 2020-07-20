@@ -30,15 +30,16 @@ public class Selector : MonoBehaviour
     int scaleAxis;
     bool passScale;
     public static double tempo = 9; //tempo de los sonidos para sincronizar
-    public static double tempo_control = tempo;     
-
-    //flags de interfaz y control
+    public static double tempo_control = tempo;
 
     public AudioMixer master;
     public static bool play = true;
+    public static AudioSource uiSound;
+    public static AudioSource uiSound2;
     [SerializeField] public Material mat_Play;
     [SerializeField] public Material mat_Pause;
-    
+
+    //flags de interfaz y control    
     public static bool Selection_Flag = false;
     public static bool flag_scale = false;
     public static bool flag_ambiente = false;
@@ -60,40 +61,16 @@ public class Selector : MonoBehaviour
     public GameObject Sala0; //Menu principal
     public GameObject Sala1; //sala Electronica
     public GameObject Sala2; //sala Orquestal   
-    GameObject Ambiente;
-    public void sincronizar()
-    {
-        tempo_control = 9;
-        flag_sound = true;
-    }
-    public void inp()
-    {
-        StartCoroutine("Countdown", contador);
-    }
-    public void outp() {
-        contador = 1;
-        StopCoroutine("Countdown");
-    }
-
-    private IEnumerator Countdown(int contador) //contador general para la interfaz
-    {
-        while (contador > 0)
-        {
-            contador--;
-            yield return new WaitForSeconds(1);
-        }
-        //Debug.Log("Countdown Complete!");
-        Selection_Flag = true;
-    }
+    GameObject Ambiente;   
 
     private void Awake()
     {
-#if PLATFORM_ANDROID
-        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
-        {
-            Permission.RequestUserPermission(Permission.Camera);
-        }
-#endif
+        #if PLATFORM_ANDROID
+                if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+                {
+                    Permission.RequestUserPermission(Permission.Camera);
+                }
+        #endif
 
     }
 
@@ -114,10 +91,36 @@ public class Selector : MonoBehaviour
         contador = 1;
         tempo_control = 0;
         velocity *= 0.001f;
+        uiSound = this.gameObject.GetComponents<AudioSource>()[0];
+        uiSound2 = this.gameObject.GetComponents<AudioSource>()[1];
 
         Ambiente = GameObject.Find("Ambiental");
     }
-//escalado de la sala
+    public void sincronizar()
+    {
+        tempo_control = 9;
+        flag_sound = true;
+    }
+    public void inp()
+    {
+        playInSound();
+        StartCoroutine("Countdown", contador);
+    }
+    public void outp() {
+        contador = 1;
+        playOutSound();
+        StopCoroutine("Countdown");
+    }
+
+    private IEnumerator Countdown(int contador) //contador general para la interfaz
+    {        
+        yield return new WaitForSeconds(contador);
+        playSelectSound();
+        //Debug.Log("Countdown Complete!");
+        Selection_Flag = true;
+    }
+
+    //escalado de la sala
     public void ScalePositive(int axis){
         scaleValue = Mathf.Abs(scaleValue);        
         ScaleRoom(axis);
@@ -127,7 +130,8 @@ public class Selector : MonoBehaviour
         scaleValue = -Mathf.Abs(scaleValue);        
         ScaleRoom(axis);
     }
-    public void ScaleRoom(int axis){        
+    public void ScaleRoom(int axis){
+        playInSound();     
         scaleAxis = axis;
         flag_scale = true;
     }
@@ -135,6 +139,7 @@ public class Selector : MonoBehaviour
     public void OUTscale()
     {
         flag_scale = false;
+        playOutSound();
     }
 //Control del menu
 
@@ -143,6 +148,7 @@ public class Selector : MonoBehaviour
     public GameObject Presets_M;
     public GameObject Config_M;
     public void Escalas_In(){
+        playInSound();
         StartCoroutine("Escalas", 1);
     }
     public void Escalas_Out(){
@@ -150,33 +156,38 @@ public class Selector : MonoBehaviour
     }
     private IEnumerator Escalas(int time){
         yield return new WaitForSeconds(time);
-
+        playSelectSound();
         General_M.SetActive(false);
         Escalas_M.SetActive(!Escalas_M.activeSelf);
 
     }
     public void Presets_In(){
+        playInSound();
         StartCoroutine("Presets", 1);
     }
     public void Presets_Out(){
+        playOutSound();
         StopCoroutine("Presets");
     }
     private IEnumerator Presets(int time){
         yield return new WaitForSeconds(time);
+        playSelectSound();
         GetRoomInfo();
         General_M.SetActive(false);
         Presets_M.SetActive(!Presets_M.activeSelf);
 
     }
     public void Config_In(){
+        playInSound();
         StartCoroutine("Config", 1);
     }
     public void Config_Out(){
+        playOutSound();
         StopCoroutine("Config");
     }
     private IEnumerator Config(int time){
         yield return new WaitForSeconds(time);
-
+        playSelectSound();
         General_M.SetActive(false);
         Config_M.SetActive(!Config_M.activeSelf);
 
@@ -191,33 +202,58 @@ public class Selector : MonoBehaviour
 //movimiento del jugador
     public void movement_W()
     {
+        playInSound();
         movW = true;
     }
     public void movement_A()
     {
+        playInSound();
         movA = true;
     }
     public void movement_S()
     {
+        playInSound();
         movS = true;
     }
     public void movement_D()
     {
+        playInSound();
         movD = true;
     }
     public void OUTmovement()
-    {
+    {        
         movA = false; movS = false; movD = false; movW = false;
+        playOutSound();
     }
     //presets
     public void setPreset(int index){
         roomPresets[index].setPreset(ResonanceRoom);
     }
 
-    //Métodos 
+    public static void playInSound(){        
+        uiSound.pitch = 1f;            
+        uiSound.volume = 0.65f;
+        if(!uiSound.isPlaying){            
+            uiSound.Play();                       
+        }
+    }
 
+    public static void playOutSound(){        
+        uiSound.volume = 1f;
+        uiSound.pitch = 0.5f;
+        if(!uiSound2.isPlaying){
+            uiSound.Play();
+        }    
+    }
+
+    public static void playSelectSound(){
+        uiSound2.Play();
+    }
+
+    //Métodos
     private IEnumerator controlador(int time){
         yield return new WaitForSeconds(time);
+        playSelectSound();
         switch(instruccion){
             case 0:
                 playPauseStop(false);
@@ -231,9 +267,11 @@ public class Selector : MonoBehaviour
     }
     
     public void controladorInstruccion(int n){
+        playInSound();
         instruccion = n;
         StartCoroutine("controlador",1);
     }
+    
     public void playPauseStop(bool stop){        
         play = !play && !stop;
 
@@ -274,14 +312,17 @@ public class Selector : MonoBehaviour
     }
 
     public void Exit_Instruction(){
+        playOutSound();
         StopCoroutine("controlador");
     }
 
     int pitch_flag = 0;
     public void Pitch_In(int n){
+        playInSound();
         pitch_flag = n;
     }
     public void Pitch_Out(){
+        playOutSound();
         pitch_flag = 0;
     }
     public void PitchMas(){
@@ -296,9 +337,11 @@ public class Selector : MonoBehaviour
     public GameObject presetName;
     public GameObject roomInfo;    
     public void setP_In(int index){
+        playInSound();
         StartCoroutine(PressetSettings(1,index));
     }
     public void setP_Out(){
+        playOutSound();
         StopAllCoroutines();
     }
     public void GetRoomInfo(){ //magia amigos, magia
@@ -314,12 +357,10 @@ public class Selector : MonoBehaviour
     
     private IEnumerator PressetSettings(int time, int index){
         yield return new WaitForSeconds(time);
-        
-            setPreset(index);
-            presetName.GetComponent<TextMeshProUGUI>().text = roomPresets[index].presetName;
-
-            GetRoomInfo();
-
+        playSelectSound();
+        setPreset(index);
+        presetName.GetComponent<TextMeshProUGUI>().text = roomPresets[index].presetName;
+        GetRoomInfo();
     }
 
     public void storePresets(){
@@ -368,7 +409,7 @@ public class Selector : MonoBehaviour
     }
     
     public void FixedUpdate()
-    {   
+    {           
         switch(pitch_flag){
             case 1:
                 PitchMas();
@@ -402,22 +443,22 @@ public class Selector : MonoBehaviour
         if(!flag_scan) flag_ambiente = CheckAmbiente();
 
         if (movW)
-        {
+        {            
             this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z + velocity);
             Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x, Movement.transform.localPosition.y, Movement.transform.localPosition.z + velocity);            
         }
         else if (movS)
-        {
+        {            
             this.transform.localPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y, this.transform.localPosition.z - velocity);
             Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x, Movement.transform.localPosition.y, Movement.transform.localPosition.z - velocity);
         }
         else if (movA)
-        {
+        {            
             this.transform.localPosition = new Vector3(this.transform.localPosition.x - velocity, this.transform.localPosition.y, this.transform.localPosition.z);
             Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x - velocity, Movement.transform.localPosition.y, Movement.transform.localPosition.z);
         }
         else if (movD)
-        {
+        {            
             this.transform.localPosition = new Vector3(this.transform.localPosition.x + velocity, this.transform.localPosition.y, this.transform.localPosition.z);
             Movement.transform.localPosition = new Vector3(Movement.transform.localPosition.x + velocity, Movement.transform.localPosition.y, Movement.transform.localPosition.z);
         }
@@ -468,7 +509,6 @@ public class Selector : MonoBehaviour
                 closeAll();
                 Canvas_Menu.SetActive(true);
             }
-        }
-        
+        }        
     }
 }
