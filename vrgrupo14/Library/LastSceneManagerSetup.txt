@@ -1,8 +1,12 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/Scenes/StartMenu.unity
 =======
 - path: Assets/Scenes/Orquestal.unity
 >>>>>>> fix5
+=======
+- path: Assets/Scenes/Electronica.unity
+>>>>>>> 672da2ed384156bf07b48ffbeb83e24d86c56854
   isLoaded: 1
   isActive: 1
