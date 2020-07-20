@@ -71,6 +71,11 @@ namespace PaperPlaneTools.AR {
 			}
 		}
 
+		private void OnDisable()
+{
+     webCamTexture.Stop();
+}
+
 		//Cambios nuestros: temporizador de salir al parar de escanear aruco		
     	private IEnumerator Scan(int time){
         	yield return new WaitForSeconds(time);
